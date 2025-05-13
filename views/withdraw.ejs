@@ -1,0 +1,681 @@
+<style>
+    * {
+        background-color: #171717;
+    }
+
+    .accordion-button:not(.collapsed),
+    .accordion-button {
+        background-color: transparent !important;
+        color: #fff;
+        border: none;
+    }
+
+    .accordion-item {
+        border: none !important;
+    }
+</style>
+<div id="preloader" class="loader">
+    <div class='sk-three-bounce'>
+        <div class='sk-bounce-1 sk-child'></div>
+        <div class='sk-bounce-2 sk-child'></div>
+        <div class='sk-bounce-3 sk-child'></div>
+    </div>
+</div>
+<div id="pjax-container">
+    <div id="block-content" class="page--cabinet">
+        <header class="header-bull header--cabinet">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="topline header__topline">
+                            <div class="topline__logo">
+                                <a href="/" class="logo" data-pjax>
+                                    <img src="/assets/img/logo-img.svg" alt="Golden" style="width: 180px;">
+                                </a>
+                            </div>
+                            <div class="topline__controls">
+                                <div class="dropdown topline__dropdown">
+                                    <a href="#" class="dropdown-toggle userdropdown topline__userdropdown"
+                                        id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="true">
+                                        <%=req.user.username%>
+                                            <span class="caret userdropdown__caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                        <li> <a href="/dashboard" data-pjax>
+                                                Dashboard
+                                            </a>
+                                        </li>
+                                        <li> <a href="/contact" data-pjax>
+                                                Support
+                                            </a>
+                                        </li>
+                                        <li> <a href="/logout">
+                                                Log out
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div> <span class="burger header__burger" id="js-menu-burger">
+                                    <i class="fa fa-bars"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <nav class="menu header__menu" id="js-menu"> <a href="/dashboard" class="menu__link"
+                                id="js-sidebar-cabinet" data-pjax>
+                                Dashboard
+                            </a>
+                            <a href="/deposit" class="menu__link" id="js-sidebar-invest" data-pjax>
+                                Add Deposit
+                            </a>
+                            <a href="/withdraw" class="menu__link" id="js-sidebar-withdraw" data-pjax>
+                                Withdraw
+                            </a>
+                            <a href="/deposits" class="menu__link" id="js-sidebar-deposits" data-pjax>
+                                Deposits
+                            </a>
+                            <a href="/history" class="menu__link" id="js-sidebar-history" data-pjax>
+                                History
+                            </a>
+                            <a href="/settings" class="menu__link" id="js-sidebar-settings" data-pjax>
+                                Settings
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="content bagblack">
+
+            <style>
+                .input-group-addon {
+                    background-color: transparent;
+                    border: 1px solid #535e69;
+                    border-radius: 30px;
+                    color: #555;
+                    width: initial;
+                }
+
+
+                .fixpadding {
+                    padding-right: 15px !important;
+                    padding-left: 15px !important;
+                }
+            </style>
+
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="card" style="margin-top: 30px">
+                            <div class="body block-header">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-8 col-sm-12">
+                                        <h2>Welcome, <%= req.user.username%>
+                                        </h2>
+                                        <ul class="breadcrumb p-l-0 p-b-0 ">
+                                            <li class="breadcrumb-item"><a href="index?a=home"><i
+                                                        class="fa fa-home"></i></a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="/dashbaord">Dashboard</a>
+                                            </li>
+                                            <li class="breadcrumb-item active">Withdraw funds</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6 col-md-4 col-sm-12 text-right">
+                                        <a href="/deposit">
+                                            <button
+                                                class="btn btn-primary btn-round btn-simple float-right hidden-xs m-l-10 btn-warning waves-effect">Make
+                                                an investment</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                    </div>
+                </div>
+
+                <div id="withdrawfd" class="col-lg-12" style="padding-right: 0px;padding-left: 0px;">
+                    <%- include("./partials/messages") %>
+
+                        <form method="POST">
+                            <!-- withdraw design start -->
+                            <div class="row clearfix">
+                                <div class="col-xl-12 col-lg-12 col-md-12">
+                                    <div class="card">
+                                        <div class="headeraccount ">
+                                            <h2>Withdraw <strong>Funds</strong></h2>
+                                        </div>
+                                        <div class="body">
+                                            <h2 class="card-inside-title">Withdraw Funds</h2>
+                                            <div class="accordion" id="accordionExample">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingOne">
+                                                        <button class="accordion-button" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            Bitcoin
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                                        aria-labelledby="headingOne">
+                                                        <div class="accordion-body">
+                                                            <form method="POST">
+                                                                <!-- withdraw design start -->
+                                                                <div class="row clearfix">
+                                                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                                                        <div class="card">
+                                                                            <div class="headeraccount ">
+                                                                                <h2>Withdraw <strong>Funds</strong>
+                                                                                </h2>
+                                                                            </div>
+                                                                            <div class="body">
+                                                                                <h2 class="card-inside-title">
+                                                                                    Withdraw Funds</h2>
+                                                                                <div
+                                                                                    class="col-xl-8 col-lg-8 col-md-12">
+                                                                                    <!-- /.form group -->
+                                                                                    <div id="beneficiaryField7"
+                                                                                        class="form-group">
+                                                                                        <label for="amount">Bitcoin
+                                                                                            Address</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            value="<%=req.user.bitcoin%>"
+                                                                                            type="text"
+                                                                                            name="btcaddress">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="amount">Enter
+                                                                                            Withdrawal
+                                                                                            Amount</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text"
+                                                                                            name="realamount">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="amount">Withdrawal
+                                                                                            Pin</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text" name="pin">
+                                                                                    </div>
+                                                                                    <button name="withdraw"
+                                                                                        type="submit"
+                                                                                        class="btn btn-primary btn-round btn-simple float-right  m-l-10 btn-warning waves-effect">Withdraw
+                                                                                        Funds</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" headingThreeid="">
+                                                        <button class="accordion-button" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                            aria-expanded="true" aria-controls="collapseThree">
+                                                            Cash App
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                                        aria-labelledby="headingThree">
+                                                        <div class="accordion-body">
+                                                            <form method="POST">
+                                                                <!-- withdraw design start -->
+                                                                <div class="row clearfix">
+                                                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                                                        <div class="card">
+                                                                            <div class="headeraccount ">
+                                                                                <h2>Withdraw <strong>Funds</strong>
+                                                                                </h2>
+                                                                            </div>
+                                                                            <div class="body">
+                                                                                <h2 class="card-inside-title">
+                                                                                    Withdraw Funds</h2>
+                                                                                <div
+                                                                                    class="col-xl-8 col-lg-8 col-md-12">
+                                                                                    <!-- /.form group -->
+                                                                                    <div id="beneficiaryField8"
+                                                                                        class="form-group">
+                                                                                        <label for="cashtag">Cash
+                                                                                            Tag</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text" name="cashtag">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="amount">Enter
+                                                                                            Withdrawal
+                                                                                            Amount</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text"
+                                                                                            name="realamount">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="amount">Withdrawal
+                                                                                            Pin</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text" name="pin">
+                                                                                    </div>
+                                                                                    <button name="withdraw"
+                                                                                        type="submit"
+                                                                                        class="btn btn-primary btn-round btn-simple float-right  m-l-10 btn-warning waves-effect">Withdraw
+                                                                                        Funds</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingTwo">
+                                                        <button class="accordion-button" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                            aria-expanded="true" aria-controls="collapseTwo">
+                                                            Bank Transfer
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                                        aria-labelledby="headingTwo">
+                                                        <div class="accordion-body">
+                                                            <form method="POST">
+                                                                <!-- withdraw design start -->
+                                                                <div class="row clearfix">
+                                                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                                                        <div class="card">
+                                                                            <div class="headeraccount ">
+                                                                                <h2>Withdraw <strong>Funds</strong>
+                                                                                </h2>
+                                                                            </div>
+                                                                            <div class="body">
+                                                                                <h2 class="card-inside-title">
+                                                                                    Withdraw Funds</h2>
+                                                                                <div
+                                                                                    class="col-xl-8 col-lg-8 col-md-12">
+                                                                                    <!-- /.form group -->
+                                                                                    <div id="beneficiaryField1"
+                                                                                        class="form-group">
+                                                                                        <label for="acct_no">Beneficiary
+                                                                                            Account Number</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text" name="acct_no"
+                                                                                            value="<%= req.user.accountNumber%>"
+                                                                                            placeholder="Enter Account Number"
+                                                                                            id="acct_no">
+                                                                                    </div>
+                                                                                    <div id="beneficiaryField2"
+                                                                                        class="form-group">
+                                                                                        <label
+                                                                                            for="acct_name">Beneficiary
+                                                                                            Account Name</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text" name="acct_name"
+                                                                                            placeholder="Enter Account Name"
+                                                                                            id="acct_name">
+                                                                                    </div>
+                                                                                    <div id="beneficiaryField3"
+                                                                                        class="form-group">
+                                                                                        <label for="acct_swift">Swift
+                                                                                            Code</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text"
+                                                                                            name="acct_swift"
+                                                                                            placeholder="Enter Swift Code"
+                                                                                            id="acct_swift">
+                                                                                    </div>
+                                                                                    <div id="beneficiaryField4"
+                                                                                        class="form-group">
+                                                                                        <label
+                                                                                            for="receiver_bank">Receiver
+                                                                                            Bank</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text"
+                                                                                            name="receiver_bank"
+                                                                                            placeholder="Enter Bank Name"
+                                                                                            id="receiver_bank">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="amount">Enter
+                                                                                            Withdrawal
+                                                                                            Amount</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text"
+                                                                                            name="realamount">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="amount">Withdrawal
+                                                                                            Pin</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text" name="pin">
+                                                                                    </div>
+                                                                                    <button name="withdraw"
+                                                                                        type="submit"
+                                                                                        class="btn btn-primary btn-round btn-simple float-right  m-l-10 btn-warning waves-effect">Withdraw
+                                                                                        Funds</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingFour">
+                                                        <button class="accordion-button" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                                            aria-expanded="true" aria-controls="collapseFour">
+                                                            Zelle
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseFour" class="accordion-collapse collapse"
+                                                        aria-labelledby="headingFour">
+                                                        <div class="accordion-body">
+                                                            <form method="POST">
+                                                                <!-- withdraw design start -->
+                                                                <div class="row clearfix">
+                                                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                                                        <div class="card">
+                                                                            <div class="headeraccount ">
+                                                                                <h2>Withdraw <strong>Funds</strong>
+                                                                                </h2>
+                                                                            </div>
+                                                                            <div class="body">
+                                                                                <h2 class="card-inside-title">
+                                                                                    Withdraw Funds</h2>
+                                                                                <div
+                                                                                    class="col-xl-8 col-lg-8 col-md-12">
+                                                                                    <!-- /.form group -->
+                                                                                    <div id="beneficiaryField1"
+                                                                                        class="form-group">
+                                                                                        <label for="acct_no">Account
+                                                                                            No</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text" name="acct_no"
+                                                                                            placeholder="Enter Account Number"
+                                                                                            id="acct_no">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="amount">Enter
+                                                                                            Withdrawal
+                                                                                            Amount</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text"
+                                                                                            name="realamount">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="amount">Withdrawal
+                                                                                            Pin</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text" name="pin">
+                                                                                    </div>
+                                                                                    <button name="withdraw"
+                                                                                        type="submit"
+                                                                                        class="btn btn-primary btn-round btn-simple float-right  m-l-10 btn-warning waves-effect">Withdraw
+                                                                                        Funds</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingFour">
+                                                        <button class="accordion-button" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                                            aria-expanded="true" aria-controls="collapseFour">
+                                                            Paypal
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseFour" class="accordion-collapse collapse"
+                                                        aria-labelledby="headingFour">
+                                                        <div class="accordion-body">
+                                                            <form method="POST">
+                                                                <!-- withdraw design start -->
+                                                                <div class="row clearfix">
+                                                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                                                        <div class="card">
+                                                                            <div class="headeraccount ">
+                                                                                <h2>Withdraw <strong>Funds</strong>
+                                                                                </h2>
+                                                                            </div>
+                                                                            <div class="body">
+                                                                                <h2 class="card-inside-title">
+                                                                                    Withdraw Funds</h2>
+                                                                                <div
+                                                                                    class="col-xl-8 col-lg-8 col-md-12">
+                                                                                    <!-- /.form group -->
+                                                                                    <div id="beneficiaryField1"
+                                                                                        class="form-group">
+                                                                                        <label for="acct_no">Paypal
+                                                                                            email</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="email" name="acct_no"
+                                                                                            placeholder="Enter Account Number"
+                                                                                            id="acct_no">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="amount">Enter
+                                                                                            Withdrawal
+                                                                                            Amount</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text"
+                                                                                            name="realamount">
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="amount">Withdrawal
+                                                                                            Pin</label>
+                                                                                        <input required
+                                                                                            class="form-control border-primary"
+                                                                                            type="text" name="pin">
+                                                                                    </div>
+                                                                                    <button name="withdraw"
+                                                                                        type="submit"
+                                                                                        class="btn btn-primary btn-round btn-simple float-right  m-l-10 btn-warning waves-effect">Withdraw
+                                                                                        Funds</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                        </form>
+                        <div class="card">
+                            <div class="headeraccount">
+                                <h2><strong>Quick </strong> Info</h2>
+                            </div>
+                            <div class="body">
+                                <table class="table table-hover m-b-0">
+                                    <tbody>
+                                        <tr>
+                                            <td>Min withdrawal - Crypto</td>
+                                            <th>$200</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Min withdrawal - USD</td>
+                                            <th>$200.01</th>
+                                        </tr>
+                                        <tr class="hide-xs">
+                                            <td>Withdrawal time</td>
+                                            <th>Instant</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="headeraccount">
+                        <h2><strong>Available</strong> Balance</h2>
+                    </div>
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="m-b-0">$<%= req.user.balance%>
+                                </h2>
+                                <p>Account balance</p>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover m-b-0">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Processor</th>
+                                        <th>Available</th>
+                                        <th>Wallet</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="max-width: 30px">
+                                            <img src="/assets/pay2/48.png" style="width: 20px;min-width: 15px">
+                                        </td>
+                                        <td>Bitcoin</td>
+
+                                        <td class="text-left"><span>$<%=req.user.balance%></span>
+
+                                        </td>
+                                        <td><a href="EditAccount?a=edit_account"><i>
+                                                    <%= req.user.bitcoin || 'not set' %>
+                                                </i></a> </td>
+                                        <td style="width: 20px"></td>
+                                        <!-- <td><a href="EditAccount?a=edit_account"><i>not set</i></a> </td> -->
+                                        <!-- <td style="width: 20px"></td> -->
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </form>
+</div>
+
+
+
+</div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="row" style="margin-top:50px;">
+                    <div class="col-md-12">
+                        <div class="row equal">
+                            <div class="col-xl-8 col-lg-8 col-md-12 no-padding wow fadeInLeft" data-wow-delay="0.2s"
+                                style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;min-height: 180px;">
+                                <div class="incrop-left" style="min-height: 100%;">
+                                    <div class="incrop-left-img">
+                                        <img src="/assets/img/uk.png">
+                                        <h4 class="step__title" style="padding-bottom: 15px;color:#facd8a;">UK
+                                            Registered Company</h4>
+                                        <p><%= res.locals.sitename %> is a fully registered and licensed company in UK. <%= res.locals.sitename %>
+                                            is powered by the latest and most secure form of SSL data encryption to keep
+                                            all your data and information safe and secure.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="topline footer__topline">
+                            <a href="index?a=cust&amp;page=home" class="logo topline__logo">
+                                <img src="/assets/img/logo.png" alt="Golden" style="width: 180px;">
+                            </a>
+                            <nav class="menu topline__menu footer__menu">
+                                <a href="/" class="menu__link" data-pjax>
+                                    Home
+                                </a>
+                                <a href="/about" class="menu__link" data-pjax>
+                                    About us
+                                </a>
+                                <a href="/investment" class="menu__link" data-pjax>
+                                    Investment
+                                </a>
+                                <a href="/partners" class="menu__link" data-pjax>
+                                    Partners
+                                </a>
+                                <a href="/terms" class="menu__link" data-pjax>
+                                    Terms
+                                </a>
+                                <a href="/contact" class="menu__link" data-pjax>
+                                    Contact us
+                                </a>
+                            </nav>
+                            <div class="footer__socfooter topline__controls" style="height: initial;">
+                                <a></a>
+                                <a></a>
+                                <a href="https://www.facebook.com" target="_blank">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="https://twitter.com" target="_blank">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="https://youtube.com" target="_blank">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__copyright">
+                    © 2021 <%= res.locals.sitename %> ALL RIGHTS RESERVED.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+
+</div>

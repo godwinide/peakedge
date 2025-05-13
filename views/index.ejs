@@ -1,0 +1,763 @@
+<div id="preloader" class="loader">
+  <div class="sk-three-bounce">
+    <div class="sk-bounce-1 sk-child"></div>
+    <div class="sk-bounce-2 sk-child"></div>
+    <div class="sk-bounce-3 sk-child"></div>
+  </div>
+</div>
+<div id="pjax-container">
+  <div id="block-content" class="">
+    <header class="header header--home">
+      <div class="header__mainimage"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="topline header__topline">
+              <a href="/" class="logo topline__logo" width="100" data-pjax>
+                <img
+                  src="/assets/img/logo.png"
+                  alt="Golden"
+                  style="width: 180px"
+                />
+              </a>
+              <nav class="menu topline__menu header__menu" id="js-menu">
+                <a href="/" class="menu__link" id="js-menu-home" data-pjax>
+                  Home
+                </a>
+                <a
+                  href="/about"
+                  class="menu__link"
+                  id="js-menu-about"
+                  data-pjax
+                >
+                  About us
+                </a>
+                <a
+                  href="/investment"
+                  class="menu__link"
+                  id="js-menu-investment"
+                  data-pjax
+                >
+                  Investment
+                </a>
+                <a
+                  href="/partners"
+                  class="menu__link"
+                  id="js-menu-partners"
+                  data-pjax
+                >
+                  Partners
+                </a>
+                <a
+                  href="/contact"
+                  class="menu__link"
+                  id="js-menu-contact"
+                  data-pjax
+                >
+                  Contact us
+                </a>
+                <span class="dropdown menu__link">
+                  <span class="dropdown-toggle" data-toggle="dropdown">
+                    <img
+                      src="/assets/default/images/flags/en.svg"
+                      style="width: 20px"
+                    />
+                  </span>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#" data-pjax>
+                        <img
+                          src="/assets/default/images/flags/en.svg"
+                          style="width: 20px"
+                          class="mr-1"
+                        />English</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" data-pjax>
+                        <img
+                          src="/assets/default/images/flags/ru.svg"
+                          style="width: 20px"
+                          class="mr-1"
+                        />Русский</a
+                      >
+                    </li>
+                  </ul>
+                </span>
+              </nav>
+              <div class="topline__controls">
+                <% if(req.user){%>
+                <div class="header__login">
+                  &nbsp;
+                  <a href="/dashboard" class="btn btn-warning" data-pjax
+                    >Dashboard</a
+                  >
+                </div>
+                <% }else{%>
+                <div class="header__login">
+                  &nbsp;
+                  <a href="/signin" class="btn btn-warning" data-pjax>
+                    &nbsp; Login
+                  </a>
+                  <a href="/signup" class="btn btn-signup" data-pjax>
+                    &nbsp; Register
+                  </a>
+                </div>
+                <%}%>
+                <span class="burger header__burger" id="js-menu-burger">
+                  <i class="fa fa-bars"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-6">
+            <div class="header__content">
+              <h1 class="header__h1">Providing the stable income 10% daily</h1>
+              <p class="header__text">
+                <%= res.locals.sitename %> is an innovative company engaged
+                <br />in investments in gold and provide the stable income 10%
+                daily.
+              </p>
+              <a href="/signup" class="btn btn-warning header__btn" data-pjax>
+                Register
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script
+        type="text/javascript"
+        src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+        async
+      >
+        {
+        	"symbols": [
+        		{
+        			"proName": "FOREXCOM:SPXUSD",
+        			"title": "S&P 500"
+        		},
+        		{
+        			"proName": "FOREXCOM:NSXUSD",
+        			"title": "Nasdaq 100"
+        		},
+        		{
+        			"proName": "FX_IDC:EURUSD",
+        			"title": "EUR/USD"
+        		},
+        		{
+        			"proName": "BITSTAMP:BTCUSD",
+        			"title": "BTC/USD"
+        		},
+        		{
+        			"proName": "BITSTAMP:ETHUSD",
+        			"title": "ETH/USD"
+        		}
+        	],
+        		"showSymbolLogo": true,
+        			"colorTheme": "dark",
+        				"isTransparent": true,
+        					"displayMode": "regular",
+        						"locale": "en"
+        }
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+    <section class="section section-team textsite titlesite">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-3 mb-3 mb-md-0">
+            <div class="statitem">
+              <div class="statitem__icon icongold">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <div class="statitem__label">Total Withdrawals</div>
+              <div class="statitem__value gold">
+                $ <span class="count">523328599</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 mb-3 mb-md-0">
+            <div class="statitem">
+              <div class="statitem__icon icongold">
+                <i class="fa fa-users"></i>
+              </div>
+              <div class="statitem__label">Investors</div>
+              <div class="statitem__value gold">
+                <span class="count">43989</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 mb-3 mb-sm-0">
+            <div class="statitem">
+              <div class="statitem__icon icongold">
+                <i class="fa fa-university"></i>
+              </div>
+              <div class="statitem__label">Total Investments</div>
+              <div class="statitem__value gold">
+                $ <span class="count">719551902</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 mb-3 mb-sm-0">
+            <div class="statitem">
+              <div class="statitem__icon icongold">
+                <i class="fa fa-credit-card"></i>
+              </div>
+              <div class="statitem__label">Total Accounts</div>
+              <div class="statitem__value gold">
+                <span class="count">823448</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script type="text/javascript">
+      $(".count").each(function () {
+        $(this)
+          .prop("Counter", 0)
+          .animate(
+            {
+              Counter: $(this).text(),
+            },
+            {
+              duration: 5000,
+              easing: "swing",
+              step: function (now) {
+                $(this).text(Math.ceil(now));
+              },
+            }
+          );
+      });
+
+      setTimeout(() => {
+        document.querySelectorAll(".count").forEach((e) => {
+          e.innerText = Number(e.innerText).toLocaleString();
+        });
+      }, 6000);
+    </script>
+    <section class="section section-home textsite titlesite">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-7">
+            <div class="section-home__title">
+              <h2 class="section__h2">
+                Why did we choose <%= res.locals.sitename %>
+              </h2>
+              <h3 class="section__h3"></h3>
+            </div>
+            <p class="section__text">
+              <%= res.locals.sitename %> is a legally registered Private Limited
+              Company which was founded and transformed into an open joint-stock
+              company in order to provide access for everyone to financial
+              products offered by <%= res.locals.sitename %>. The investment
+              management potential created by the professionals working with the
+              Company had been the underlying reason of the transformation.
+              Since <%= res.locals.sitename %> has demonstrated outstanding
+              performance and significantly expanded its assets in the previous
+              period, the decision was made to start offering its investment
+              products via specialized online services. The Company is not a
+              member, associate or subdivision of any other organization, so it
+              is free to make totally independent decisions. Our team of
+              full-time financial experts ensures effective and quick analysis
+              of the current financial situation. Our mission is to provide
+              every person the opportunity to gain maximal profit from investing
+              at minimal risk..
+            </p>
+            <a
+              href="indexe47ee47e.html?a=about"
+              class="btn btn-outline-warning section-home__btn textsite"
+              data-pjax
+            >
+              Learn more
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-5">
+            <div
+              style="
+                height: 433px;
+                background-color: #1d2330;
+                overflow: hidden;
+                box-sizing: border-box;
+                border: 1px solid #282e3b;
+                border-radius: 4px;
+                text-align: right;
+                line-height: 14px;
+                font-size: 12px;
+                font-feature-settings: normal;
+                text-size-adjust: 100%;
+                box-shadow: inset 0 -20px 0 0 #262b38;
+                padding: 0px;
+                margin: 0px;
+                width: 100%;
+              "
+            >
+              <div
+                style="height: 413px; padding: 0px; margin: 0px; width: 100%"
+              >
+                <iframe
+                  src="https://widget.coinlib.io/widget?type=full_v2&amp;theme=dark&amp;cnt=6&amp;pref_coin_id=1505&amp;graph=yes"
+                  width="100%"
+                  height="409px"
+                  scrolling="auto"
+                  marginwidth="0"
+                  marginheight="0"
+                  frameborder="0"
+                  border="0"
+                  style="border: 0; margin: 0; padding: 0"
+                ></iframe>
+              </div>
+              <div
+                style="
+                  color: #626b7f;
+                  line-height: 14px;
+                  font-weight: 400;
+                  font-size: 11px;
+                  box-sizing: border-box;
+                  padding: 2px 6px;
+                  width: 100%;
+                  font-family: Verdana, Tahoma, Arial, sans-serif;
+                "
+              >
+                <a
+                  href="https://coinlib.io/"
+                  target="_blank"
+                  style="
+                    font-weight: 500;
+                    color: #626b7f;
+                    text-decoration: none;
+                    font-size: 11px;
+                  "
+                  >Cryptocurrency Prices</a
+                >&nbsp;by Coinlib
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="services textsite titlesite">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 section__title">
+            <h2 class="section__h2">Our Features</h2>
+            <h3 class="section__h3">
+              Accruals in all plans are carried out for life.
+            </h3>
+          </div>
+          <div class="col-md-4">
+            <div class="service-item text-center">
+              <div class="services-icon"><i class="tf-profile-male"></i></div>
+              <h4 class="service-title">TEAM</h4>
+              <p class="service-description text-justify">
+                We are a well-coordinated team that takes responsibility for
+                fulfilling the contract. You could not find a better place.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-item text-center">
+              <div class="services-icon"><i class="tf-document3"></i></div>
+              <h4 class="service-title">WARRANTY</h4>
+              <p class="service-description text-justify">
+                The stability of our company and income guarantee that your
+                deposit is safe throughout the entire investment plan.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-item text-center">
+              <div class="services-icon"><i class="tf-chat"></i></div>
+              <h4 class="service-title">24/7 SUPPORT</h4>
+              <p class="service-description text-justify">
+                Our support team is at your disposal 24 hours a day, 7 days a
+                week. If you have any questions, write to us.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-item text-center">
+            <div class="services-icon"><i class="tf-wallet"></i></div>
+            <h4 class="service-title">INSTANT WITHDRAWALS</h4>
+            <p class="service-description text-justify">
+              You can withdraw money at any time if your balance allows it.
+              Minimum withdrawal amount is only 2 USD
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-item text-center">
+            <div class="services-icon"><i class="tf-desktop"></i></div>
+            <h4 class="service-title">DEDICATED SERVER</h4>
+            <p class="service-description text-justify">
+              Our site is located on a very secure and stable dedicated
+              server.You do not have to worry about any breaks in its operation.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="service-item text-center">
+            <div class="services-icon"><i class="tf-lock2"></i></div>
+            <h4 class="service-title">EV-SSL SAFETY</h4>
+            <p class="service-description text-justify">
+              Your data is secured with an EV-SSL certificate, guaranteeing the
+              confidentiality of their transmission.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="inv-plans bg-iv-plan textsite titlesite bagblack">
+      <div class="container">
+        <div class="col-md-12 section__title">
+          <h2 class="section__h2">Choose a suitable investment plan</h2>
+          <h3 class="section__h3">What do we offer to investors?</h3>
+        </div>
+        <div class="row">
+          <div
+            class="col-sm-4 wow fadeInUp"
+            data-wow-duration="1s"
+            data-wow-delay="0s"
+            cellspacing="0"
+            style="
+              visibility: visible;
+              animation-duration: 1s;
+              animation-delay: 0s;
+              animation-name: fadeInUp;
+            "
+          >
+            <div class="plans">
+              <div class="plan_details text-center">
+                <div class="plan_title">Standard Plan</div>
+                <div class="percentage">10%</div>
+                <p class="profit_duration">After 24 Hours</p>
+                <ul class="list-items">
+                  <li class="list-item">Deposit Included</li>
+                  <li class="list-item">Minimum $50</li>
+                  <li class="list-item">Maximum $1999.9</li>
+                </ul>
+                <div class="plans_btn">
+                  <a class="btn btn-warning" href="signinc30b.html?a=login"
+                    >Deposit Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-sm-4 wow fadeInUp"
+            data-wow-duration="1s"
+            data-wow-delay="0s"
+            cellspacing="0"
+            style="
+              visibility: visible;
+              animation-duration: 1s;
+              animation-delay: 0s;
+              animation-name: fadeInUp;
+            "
+          >
+            <div class="plans cyne">
+              <div class="plan_details text-center">
+                <div class="plan_title">Classic Plan</div>
+                <div class="percentage">30%</div>
+                <p class="profit_duration">After 48 Hours</p>
+                <ul class="list-items">
+                  <li class="list-item">Deposit Included</li>
+                  <li class="list-item">Minimum $2000</li>
+                  <li class="list-item">Maximum $9999.99</li>
+                </ul>
+                <a class="btn btn-warning" href="signinc30b.html?a=login"
+                  >Deposit Now</a
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-sm-4 wow fadeInUp"
+            data-wow-duration="1s"
+            data-wow-delay="0s"
+            cellspacing="0"
+            style="
+              visibility: visible;
+              animation-duration: 1s;
+              animation-delay: 0s;
+              animation-name: fadeInUp;
+            "
+          >
+            <div class="plans magenta">
+              <div class="plan_details text-center">
+                <div class="plan_title">Premium Plan</div>
+                <div class="percentage">60%</div>
+                <p class="profit_duration">After 7 Day</p>
+                <ul class="list-items">
+                  <li class="list-item">Deposit Included</li>
+                  <li class="list-item">Minimum $10,000</li>
+                  <li class="list-item">Maximum Unlimited</li>
+                </ul>
+                <a class="btn btn-warning" href="signinc30b.html?a=login"
+                  >Deposit Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <section class="invest_plans">
+          <div class="container p-0">
+            <div class="row" style="padding-bottom: 100px">
+              <div class="col-sm-12 col-md-6">
+                <div class="bg-gradiant">
+                  <div class="d-flex">
+                    <div class="plan-drops">
+                      <div class="plans-label one" style="color: #facd8a">
+                        Select your plan
+                      </div>
+                      <select id="calc_plan" class="form-control">
+                        <option value="1" class="opts">
+                          10% After 24 Hours
+                        </option>
+                        <option value="2" class="opts">
+                          30% After 48 Hours
+                        </option>
+                        <option value="3" class="opts">60% After 7 days</option>
+                      </select>
+                    </div>
+                    <div class="plan-drops">
+                      <div class="plans-label" style="color: #facd8a">
+                        Deposit Amount
+                      </div>
+                      <input
+                        id="inv_amount"
+                        value="50"
+                        name="limitedtextfield"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div class="bg-gradiant two">
+                  <div class="d-flex">
+                    <div class="plans-label">
+                      <span style="color: #facd8a">Daily</span>
+                      <div class="calcblock__value">
+                        <span
+                          id="total_day"
+                          style="color: rgba(255, 255, 255, 0.8) !important"
+                          >0.00</span
+                        >
+                        <span
+                          style="color: rgba(255, 255, 255, 0.8) !important"
+                        >
+                          USD
+                        </span>
+                      </div>
+                    </div>
+                    <div class="plans-label">
+                      <div class="calcblock__cell textsite">
+                        <span style="color: #facd8a">Weekly</span>
+                        <div class="calcblock__value">
+                          <span id="total_week">0.00</span> USD
+                        </div>
+                      </div>
+                    </div>
+                    <div class="plans-label">
+                      <div class="calcblock__cell textsite">
+                        <span style="color: #facd8a">Mounthly</span>
+                        <div class="calcblock__value">
+                          <span id="total_return">0.00</span> USD
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+    <section class="section section-affilate textsite titlesite">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 section__title">
+            <h2 class="section__h2">Referral Commission</h2>
+            <h3 class="section__h3">2 level affiliate program</h3>
+          </div>
+          <div class="col-md-6">
+            <p class="section__text">
+              At <%= res.locals.sitename %>, we believe that advertising about
+              our services by our satisfied clients is the best way to grow
+              business. Keeping this in mind, <%= res.locals.sitename %> founded
+              an amazing lucrative reward in terms of two level affiliate
+              program.
+            </p>
+            <br />
+            <p class="section__text">
+              <%= res.locals.sitename %> is paying for the popularization of its
+              investment program and anyone can be rewarded. To benefit from
+              this, you have to refer your friends, relatives and colleagues in
+              your network through a referral link. You can earn on our
+              affiliate program and withdraw referral rewards regardless of the
+              presence of a deposit in the project.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div class="affilates section-affilate__affilates">
+              <div class="affilate affilates__affilate">
+                <div class="affilate__label">1 level</div>
+                <div class="affilate__value">3%</div>
+              </div>
+              <div class="affilate affilates__affilate">
+                <div class="affilate__label">2 level</div>
+                <div class="affilate__value">1%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-team">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="text-center">
+              <img src="/assets/img/pslogo/pyusd.png" alt="Payeer" />
+              <img src="/assets/img/pslogo/pmusd.png" alt="PerfectMoney" />
+              <img src="/assets/img/pslogo/btc.png" alt="Bitcoin" />
+              <img src="/assets/img/pslogo/eth.png" alt="Ethereum" />
+              <img src="/assets/img/pslogo/ltc.png" alt="Litecoin" />
+              <img src="/assets/img/pslogo/doge.png" alt="Dogecoin" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="row" style="margin-top: 50px">
+              <div class="col-md-12">
+                <div class="row equal">
+                  <div
+                    class="col-md-8 no-padding wow fadeInLeft"
+                    data-wow-delay="0.2s"
+                    style="
+                      visibility: visible;
+                      animation-delay: 0.2s;
+                      animation-name: fadeInLeft;
+                      min-height: 180px;
+                    "
+                  >
+                    <div class="incrop-left" style="min-height: 100%">
+                      <div class="incrop-left-img">
+                        <img src="/assets/img/uk.png" />
+                        <h4
+                          class="step__title"
+                          style="padding-bottom: 15px; color: #facd8a"
+                        >
+                          UK Registered Company
+                        </h4>
+                        <p>
+                          <%= res.locals.sitename %> is a fully registered and
+                          licensed company in UK. <%= res.locals.sitename %> is
+                          powered by the latest and most secure form of SSL data
+                          encryption to keep all your data and information safe
+                          and secure.
+                        </p>
+                      </div>
+                      <div class="incrop-right-img">
+                        <embed src="certificate.png" width="250" height="200" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="topline footer__topline">
+                  <a href="index.html" class="logo topline__logo">
+                    <img
+                      src="/assets/img/logo.png"
+                      alt="Golden"
+                      style="width: 180px"
+                    />
+                  </a>
+                  <nav class="menu topline__menu footer__menu">
+                    <a href="/" class="menu__link" data-pjax> Home </a>
+                    <a href="/about" class="menu__link" data-pjax> About us </a>
+                    <a href="/investment" class="menu__link" data-pjax>
+                      Investment
+                    </a>
+                    <a href="/partners" class="menu__link" data-pjax>
+                      Partners
+                    </a>
+                    <a href="/terms" class="menu__link" data-pjax> Terms </a>
+                    <a href="/contact" class="menu__link" data-pjax>
+                      Contact us
+                    </a>
+                  </nav>
+                  <div
+                    class="footer__socfooter topline__controls"
+                    style="height: initial"
+                  >
+                    <a></a>
+                    <a></a>
+                    <a href="https://www.facebook.com/" target="_blank">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="https://youtube.com/" target="_blank">
+                      <i class="fa fa-youtube"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer__copyright">
+              © 2021 <%= res.locals.sitename %>. ALL RIGHTS RESERVED.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <link rel="stylesheet" href="/assets/libs/bootstrap/fileinput.min.css" />
+  <script src="/assets/libs/bootstrap/bootstrap.min.js"></script>
+  <script src="/assets/libs/bootstrap/fileinput.min.js"></script>
+  <script>
+    $(function () {
+      $("#p-1-tabs .icontext").click(function (e) {
+        e.preventDefault();
+        $(this).tab("show");
+      });
+      $("#p-1-tabs .icontext").on("shown.bs.tab", function (e) {
+        $("#p-1-tabs .icontext").removeClass("active");
+        $(e.target).addClass("active");
+      });
+    });
+  </script>
+  <script>
+    addClass(document.getElementById("js-menu-home"), "menu__link--active");
+    setTimeout(function () {
+      var payments = document.getElementsByClassName("js-header-oper");
+      for (var i = 0; i < payments.length; i++) {
+        payments[i].style.bottom = null;
+        payments[i].style.opacity = null;
+      }
+    }, 500);
+  </script>
+</div>

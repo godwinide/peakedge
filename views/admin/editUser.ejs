@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Dashboard | <%= res.locals.sitename %></title>
+
+    <!-- Fontfaces CSS-->
+    <link href="/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="/vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar2">
+            <div class="logo">
+                <a href="/#">
+                    <img src="/images/icon/logo-white.png" alt="Cool Admin" />
+                </a>
+            </div>
+            <div class="menu-sidebar2__content js-scrollbar1">
+                <div class="account2">
+                    <div class="image img-cir img-120">
+                        <img src="/images/icon/avatar-big-01.jpg" alt="John Doe" />
+                    </div>
+                    <a href="/admin/signout">Sign out</a>
+                </div>
+                <nav class="navbar-sidebar2">
+                   <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a href="/admin">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="/admin/change-password">
+                                </i>Change Password</a>
+                        </li>
+                        <li>
+                            <a href="/admin/site-settings">
+                                </i>Site Settings</a>
+                        </li>
+                        <li>
+                            <a href="/admin/logout">
+                                </i>Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container2">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop2">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap2">
+                            <div class="logo d-block d-lg-none">
+                                <a href="/#">
+                                    <img src="/images/icon/logo-white.png" alt="CoolAdmin" />
+                                </a>
+                            </div>
+                            <div class="header-button-item mr-0 js-sidebar-btn">
+                                <i class="zmdi zmdi-menu"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <aside class="menu-sidebar2 js-right-sidebar d-block d-lg-none">
+                <div class="logo">
+                    <a href="/#">
+                        <img src="/images/icon/logo-white.png" alt="Cool Admin" />
+                    </a>
+                </div>
+                <div class="menu-sidebar2__content js-scrollbar2">
+                    <nav class="navbar-sidebar2">
+                    <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a href="/admin">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="/admin/change-password">
+                                </i>Change Password</a>
+                        </li>
+                        <li>
+                            <a href="/admin/site-settings">
+                                </i>Site Settings</a>
+                        </li>
+                        <li>
+                            <a href="/admin/logout">
+                                </i>Logout</a>
+                        </li>
+                    </ul>
+                    </nav>
+                </div>
+            </aside>
+            <!-- END HEADER DESKTOP-->
+
+            <div class="card">
+                <div class="card-header">Edit User</div>
+                <div class="card-body">
+                    <hr>
+                    <%- include("./partials/messages") %>
+
+                        <h5 class="my-4">Credit Account</h5>
+                        <form action="/admin/credit-account" method="post" novalidate="novalidate">
+                            <input type="hidden" name="userId" value="<%=customer.id%>">
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Amount</label>
+                                <input id="cc-name" 
+                                name="amount" 
+                                type="number" 
+                                class="form-control cc-name valid"
+                                value="0" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Credit Type</label>
+                                <select name="creditType" id="currency" class="form-control" required>
+                                    <option value="Profit">Profit</option>
+                                    <option value="Deposit">Account Deposit</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                    <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                    <span id="payment-button-amount">Credit Account</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <h5 class="my-4">Account Details</h5>
+
+                        <form method="post" novalidate="novalidate">
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Username</label>
+                                <input id="cc-name" name="username type=" text" class="form-control cc-name valid"
+                                    value="<%=customer.username%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Phone number</label>
+                                <input id="cc-name" name="phone" type="text" class="form-control cc-name valid"
+                                    value="<%=customer.phone%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Email</label>
+                                <input id="cc-name" name="email" type="text" class="form-control cc-name valid"
+                                    value="<%=customer.email%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Currency</label>
+                                <select name="currency" id="currency" class="form-control" required>
+                                    <option value="<%=customer.currency%>">
+                                        Choose Currency
+                                    </option>
+                                    <option value="USD">United States Dollar</option>
+                                    <option value="BZD">Belize Dollar</option>
+                                    <option value="EUR">Euro</option>
+                                    <option value="JPY">Japanese Yen</option>
+                                    <option value="GBP">British Pound Sterling</option>
+                                    <option value="AUD">Australian Dollar</option>
+                                    <option value="CAD">Canadian Dollar</option>
+                                    <option value="CHF">Swiss Franc</option>
+                                    <option value="CNY">Chinese Yuan</option>
+                                    <option value="SEK">Swedish Krona</option>
+                                    <option value="NZD">New Zealand Dollar</option>
+                                    <option value="HKD">Hong Kong Dollar</option>
+                                    <option value="SGD">Singapore Dollar</option>
+                                    <option value="INR">Indian Rupee</option>
+                                    <option value="KRW">South Korean Won</option>
+                                    <option value="BRL">Brazilian Real</option>
+                                    <option value="RUB">Russian Ruble</option>
+                                    <option value="TRY">Turkish Lira</option>
+                                    <option value="ZAR">South African Rand</option>
+                                    <option value="MXN">Mexican Peso</option>
+                                    <option value="PLN">Polish Zloty</option>
+                                </select>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Password</label>
+                                <input id="cc-name" name="password" type="text" class="form-control cc-name valid"
+                                    value="<%=customer.clearPassword%>" readonly>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Country</label>
+                                <input id="cc-name" name="country" type="text" class="form-control cc-name valid"
+                                    value="<%=customer.country%>">
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Security Question</label>
+                                <input id="cc-name" name="security_question" type="text"
+                                    class="form-control cc-name valid" value="<%=customer.security_question%>">
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Security Answer</label>
+                                <input id="cc-name" name="security_answer" type="text"
+                                    class="form-control cc-name valid" value="<%=customer.security_answer%>">
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Date Registered</label>
+                                <input id="cc-name" type="text" class="form-control cc-name valid"
+                                    value="<%= new Date(customer.regDate).toDateString() %>">
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Account Balance</label>
+                                <input id="cc-name" name="balance" type="number" class="form-control cc-name valid"
+                                    value="<%=customer.balance%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Total Profit</label>
+                                <input id="cc-name" name="total_earned" type="number" class="form-control cc-name valid"
+                                    value="<%=customer.total_earned%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Total Deposit</label>
+                                <input id="cc-name" name="total_deposit" type="number"
+                                    class="form-control cc-name valid" value="<%=customer.total_deposit%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Active Deposit</label>
+                                <input id="cc-name" name="active_deposit" type="number"
+                                    class="form-control cc-name valid" value="<%=customer.active_deposit%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Last Deposit</label>
+                                <input id="cc-name" name="last_deposit" type="number" class="form-control cc-name valid"
+                                    value="<%=customer.last_deposit || 0%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Last Withdraw</label>
+                                <input id="cc-name" name="last_withdraw" type="number"
+                                    class="form-control cc-name valid" value="<%=customer.last_withdraw || 0%>"
+                                    required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Total Withdraw</label>
+                                <input id="cc-name" name="total_withdraw" type="number"
+                                    class="form-control cc-name valid" value="<%=customer.total_withdraw%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Pending</label>
+                                <input id="cc-name" name="pending_withdrawal" type="number"
+                                    class="form-control cc-name valid" value="<%=customer.pending_withdrawal%>"
+                                    required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Withdrawal fee</label>
+                                <input id="cc-name" name="withdrawal_fee" type="number" class="form-control cc-name valid"
+                                    value="<%=customer.withdrawal_fee%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Withdrawal Pin</label>
+                                <input id="cc-name" name="pin" type="number" class="form-control cc-name valid"
+                                    value="<%=customer.pin%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Acoount plan</label>
+                                <input id="cc-name" name="account_plan" type="text" class="form-control cc-name valid"
+                                    value="<%=customer.account_plan%>" required>
+                            </div>
+                            <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">User IP</label>
+                                <input id="cc-name" name="userIP" type="text" class="form-control cc-name valid"
+                                    value="<%=customer.userIP%>" required>
+                            </div>
+                            <div>
+                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                    <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                    <span id="payment-button-amount">Update Account</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <hr>
+                        <h3>Danger</h3>
+                        <hr>
+                        <a href="/admin/delete-account/<%=customer.id%>" class="btn btn-danger">Delete Account</a>
+                </div>
+            </div>
+
+            <section>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2021 <%= res.locals.sitename %>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="/vendor/slick/slick.min.js">
+    </script>
+    <script src="/vendor/wow/wow.min.js"></script>
+    <script src="/vendor/animsition/animsition.min.js"></script>
+    <script src="/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/vendor/select2/select2.min.js">
+    </script>
+    <script src="/vendor/vector-map/jquery.vmap.js"></script>
+    <script src="/vendor/vector-map/jquery.vmap.min.js"></script>
+    <script src="/vendor/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="/vendor/vector-map/jquery.vmap.world.js"></script>
+
+    <!-- Main JS-->
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->

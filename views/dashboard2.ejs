@@ -1,0 +1,843 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      rel="stylesheet"
+    />
+    <!-- font-family: 'Open Sans', sans-serif; -->
+    <link
+      href="/dashboard/style/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" type="text/css" href="" />
+    <link href="/dashboard/style/custom.css" rel="stylesheet" type="text/css" />
+    <link
+      href="/dashboard/style/default.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="/dashboard/style/tab.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="../styles/images/favicon.png" />
+    <script src="/dashboard/style/jquery.js" type="text/javascript"></script>
+    <script src="/dashboard/style/setting2.js" type="text/javascript"></script>
+    <script src="/dashboard/style/tab.js" type="text/javascript"></script>
+    <script
+      src="/dashboard/style/bootstrap.min.js"
+      type="text/javascript"
+    ></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap");
+    </style>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <style data-styled="active" data-styled-version="5.1.1"></style>
+    <style type="text/css">
+      button.btn[data-v-5f0b9ba1] {
+        display: inline-block;
+        font-weight: 300;
+        line-height: 1.25;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        cursor: pointer;
+        letter-spacing: 1px;
+        transition: all 0.15s ease;
+      }
+
+      button.btn.btn-sm[data-v-5f0b9ba1] {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 0.2rem;
+      }
+
+      button.btn.btn-primary[data-v-5f0b9ba1] {
+        color: #fff;
+        background-color: #45c8f1;
+        border-color: #45c8f1;
+      }
+
+      button.btn.btn-outline-primary[data-v-5f0b9ba1] {
+        color: #45c8f1;
+        background-color: transparent;
+        border-color: #45c8f1;
+      }
+
+      button.btn.btn-danger[data-v-5f0b9ba1] {
+        color: #fff;
+        background-color: #ff4949;
+        border-color: #ff4949;
+      }
+
+      .text-muted[data-v-5f0b9ba1] {
+        color: #8492a6;
+      }
+
+      .text-center[data-v-5f0b9ba1] {
+        text-align: center;
+      }
+
+      .drop-down-enter[data-v-5f0b9ba1],
+      .drop-down-leave-to[data-v-5f0b9ba1] {
+        transform: translateX(0) translateY(-20px);
+        transition-timing-function: cubic-bezier(0.74, 0.04, 0.26, 1.05);
+        opacity: 0;
+      }
+
+      .drop-down-enter-active[data-v-5f0b9ba1],
+      .drop-down-leave-active[data-v-5f0b9ba1] {
+        transition: all 0.15s;
+      }
+
+      .move-left-enter[data-v-5f0b9ba1],
+      .move-left-leave-to[data-v-5f0b9ba1] {
+        transform: translateY(0) translateX(-80px);
+        transition-timing-function: cubic-bezier(0.74, 0.04, 0.26, 1.05);
+        opacity: 0;
+      }
+
+      .move-left-enter-active[data-v-5f0b9ba1],
+      .move-left-leave-active[data-v-5f0b9ba1] {
+        transition: all 0.15s;
+      }
+
+      .no-tr[data-v-5f0b9ba1] {
+        transition: none !important;
+      }
+
+      .no-tr *[data-v-5f0b9ba1] {
+        transition: none !important;
+      }
+
+      .overlay[data-v-5f0b9ba1] {
+        position: fixed;
+        background: rgba(220, 220, 220, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: all 0.2s ease;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .overlay .modal[data-v-5f0b9ba1] {
+        transition: all 0.2s ease;
+        opacity: 0;
+        transform: scale(0.6);
+        overflow: hidden;
+      }
+
+      .overlay.show[data-v-5f0b9ba1] {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .overlay.show .modal[data-v-5f0b9ba1] {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .panel[data-v-5f0b9ba1] {
+        padding: 6px 10px;
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        align-items: center;
+        border-radius: 4px;
+        position: relative;
+        border: 1px solid #eaf7ff;
+        background: #f7fcff;
+        outline: none;
+        transition: all 0.07s ease-in-out;
+      }
+
+      .btn[data-v-5f0b9ba1] {
+        cursor: pointer;
+        box-sizing: border-box;
+      }
+
+      .light-btn[data-v-5f0b9ba1] {
+        padding: 6px 10px;
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        align-items: center;
+        border-radius: 4px;
+        position: relative;
+        border: 1px solid #eaf7ff;
+        background: #f7fcff;
+        outline: none;
+        cursor: pointer;
+        transition: all 0.07s ease-in-out;
+      }
+
+      .light-btn[data-v-5f0b9ba1]:hover {
+        background: #e0f4ff;
+        border-color: #8acfff;
+      }
+
+      .shake[data-v-5f0b9ba1] {
+        animation: shake-data-v-5f0b9ba1 0.82s
+          cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        transform: translate3d(0, 0, 0);
+      }
+
+      @keyframes shake-data-v-5f0b9ba1 {
+        10%,
+        90% {
+          transform: translate3d(-1px, 0, 0);
+        }
+
+        20%,
+        80% {
+          transform: translate3d(2px, 0, 0);
+        }
+
+        30%,
+        50%,
+        70% {
+          transform: translate3d(-4px, 0, 0);
+        }
+
+        40%,
+        60% {
+          transform: translate3d(4px, 0, 0);
+        }
+      }
+
+      .pulse[data-v-5f0b9ba1] {
+        animation: pulse-data-v-5f0b9ba1 2s ease infinite;
+      }
+
+      @keyframes pulse-data-v-5f0b9ba1 {
+        0% {
+          opacity: 0.7;
+        }
+
+        50% {
+          opacity: 0.4;
+        }
+
+        100% {
+          opacity: 0.7;
+        }
+      }
+
+      .flash-once[data-v-5f0b9ba1] {
+        animation: flash-once 3.5s ease 1;
+      }
+
+      @keyframes fade-up-data-v-5f0b9ba1 {
+        0% {
+          transform: translate3d(0, 10px, 0);
+          opacity: 0;
+        }
+
+        100% {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+
+      .fade-in[data-v-5f0b9ba1] {
+        animation: fade-in-data-v-5f0b9ba1 0.3s ease-in-out;
+      }
+
+      @keyframes fade-in-data-v-5f0b9ba1 {
+        0% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .spin[data-v-5f0b9ba1] {
+        animation-name: spin-data-v-5f0b9ba1;
+        animation-duration: 2000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+
+      @keyframes spin-data-v-5f0b9ba1 {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .bounceIn[data-v-5f0b9ba1] {
+        animation-name: bounceIn-data-v-5f0b9ba1;
+        transform-origin: center bottom;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-iteration-count: 1;
+      }
+
+      @keyframes bounceIn-data-v-5f0b9ba1 {
+        0%,
+        20%,
+        40%,
+        60%,
+        80%,
+        100% {
+          -webkit-transition-timing-function: cubic-bezier(
+            0.215,
+            0.61,
+            0.355,
+            1
+          );
+          transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        0% {
+          opacity: 1;
+          -webkit-transform: scale3d(0.8, 0.8, 0.8);
+          transform: scale3d(0.8, 0.8, 0.8);
+        }
+
+        20% {
+          -webkit-transform: scale3d(1.1, 1.1, 1.1);
+          transform: scale3d(1.1, 1.1, 1.1);
+        }
+
+        40% {
+          -webkit-transform: scale3d(0.9, 0.9, 0.9);
+          transform: scale3d(0.9, 0.9, 0.9);
+        }
+
+        60% {
+          opacity: 1;
+          -webkit-transform: scale3d(1.03, 1.03, 1.03);
+          transform: scale3d(1.03, 1.03, 1.03);
+        }
+
+        80% {
+          -webkit-transform: scale3d(0.97, 0.97, 0.97);
+          transform: scale3d(0.97, 0.97, 0.97);
+        }
+
+        100% {
+          opacity: 1;
+          -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+        }
+      }
+
+      @keyframes dots-data-v-5f0b9ba1 {
+        0%,
+        20% {
+          color: rgba(0, 0, 0, 0);
+          text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+        }
+
+        40% {
+          color: #8492a6;
+          text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+        }
+
+        60% {
+          text-shadow: 0.25em 0 0 #8492a6, 0.5em 0 0 rgba(0, 0, 0, 0);
+        }
+
+        80%,
+        100% {
+          text-shadow: 0.25em 0 0 #8492a6, 0.5em 0 0 #8492a6;
+        }
+      }
+
+      @keyframes recording-data-v-5f0b9ba1 {
+        0% {
+          box-shadow: 0px 0px 5px 0px rgba(173, 0, 0, 0.3);
+        }
+
+        65% {
+          box-shadow: 0px 0px 5px 5px rgba(173, 0, 0, 0.3);
+        }
+
+        90% {
+          box-shadow: 0px 0px 5px 5px rgba(173, 0, 0, 0);
+        }
+      }
+
+      body[data-v-5f0b9ba1] {
+        margin: 0;
+        font-size: 100%;
+        color: #3c4858;
+      }
+
+      a[data-v-5f0b9ba1] {
+        text-decoration: none;
+        color: #45c8f1;
+      }
+
+      h1[data-v-5f0b9ba1],
+      h2[data-v-5f0b9ba1],
+      h3[data-v-5f0b9ba1],
+      h4[data-v-5f0b9ba1] {
+        margin-top: 0;
+      }
+
+      svg[data-v-5f0b9ba1] {
+        outline: none;
+      }
+
+      .container_selected_area[data-v-5f0b9ba1] {
+        display: none;
+        visibility: hidden;
+        padding: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2147483647;
+      }
+
+      .container_selected_area.active[data-v-5f0b9ba1] {
+        visibility: visible;
+        display: block;
+      }
+
+      .container_selected_area .label[data-v-5f0b9ba1] {
+        font-family: "Didact Gothic Regular", sans-serif;
+        font-size: 22px;
+        text-align: center;
+        padding-top: 15px;
+      }
+
+      .container_selected_area .area[data-v-5f0b9ba1] {
+        display: none;
+        position: fixed;
+        z-index: 2147483647;
+        border: 1px solid #1e83ff;
+        background: rgba(30, 131, 255, 0.1);
+        box-sizing: border-box;
+      }
+
+      .container_selected_area .area.active[data-v-5f0b9ba1] {
+        display: block;
+        top: 0;
+        left: 0;
+      }
+
+      .hide[data-v-5f0b9ba1] {
+        display: none;
+      }
+      .trans select {
+        background-color: #fff !important;
+      }
+    </style>
+    <style>
+      @media screen and (max-width: 768px) {
+        body {
+          font-size: 30px;
+        }
+        .ctn-invesment-part {
+          width: 48% !important;
+        }
+        .ref-link {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    style="background-color: rgb(0, 0, 0); zoom: 1"
+    class="loginarea"
+    cz-shortcut-listen="true"
+  >
+    <div
+      style="z-index: 1000; position: relative"
+      class="trans"
+      id="google_translate_element"
+    ></div>
+
+    <div class="wrapper-account">
+      <div class="headerContainer">
+        <div class="headerInner">
+          <div class="hdRight">
+            <div class="mainNavRight">
+              <div class="navbar">
+                <div class="navbar-inner"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inside_inner_account">
+      <div class="member_wrap">
+        <div class="membersidebar">
+          <ul>
+            <li><a href="/settings">My Account</a></li>
+
+            <li><a href="/deposit">Deposit</a></li>
+
+            <li><a href="/history">Withdraw History</a></li>
+            <li><a href="/withdraw">Withdraw</a></li>
+            <li></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </div>
+        <div class="member-container">
+          <div class="account_top">
+            <div class="user_left">
+              <h2 style="font-size: 1em">
+                Welcome, <span> <%= req.user.fullname %> </span>
+              </h2>
+            </div>
+            <div class="affiliate_top" style="font-size: 0.8em">
+              Affiliate Link:<a
+                href="http://<%= res.locals.sitename %>.com?ref=<%= req.user.email%>"
+                class="ref-link"
+              >
+                http://<%= res.locals.sitename %>.com?ref=<%=
+                req.user.email%></a
+              >
+            </div>
+          </div>
+          <div class="member_right">
+            <center>
+              <!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container">
+                <div id="tradingview_f933e">
+                  <div
+                    id="tradingview_a1a3b-wrapper"
+                    style="
+                      position: relative;
+                      box-sizing: content-box;
+                      width: 1050px;
+                      height: calc(500px - 32px);
+                      margin: 0 auto !important;
+                      padding: 0 !important;
+                      font-family: -apple-system, BlinkMacSystemFont,
+                        'Trebuchet MS', Roboto, Ubuntu, sans-serif;
+                    "
+                  >
+                    <div
+                      style="
+                        width: 1050px;
+                        height: calc(500px - 32px);
+                        background: transparent;
+                        padding: 0 !important;
+                      "
+                    >
+                      <iframe
+                        id="tradingview_a1a3b"
+                        src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_a1a3b&amp;symbol=BITFINEX%3ABTCUSD&amp;interval=1&amp;hidesidetoolbar=0&amp;symboledit=1&amp;saveimage=1&amp;toolbarbg=f1f3f6&amp;calendar=1&amp;studies=BB%40tv-basicstudies&amp;theme=Dark&amp;style=9&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=bitcryptodailytrade.com&amp;utm_medium=widget_new&amp;utm_campaign=chart&amp;utm_term=BITFINEX%3ABTCUSD"
+                        style="
+                          width: 100%;
+                          height: 100%;
+                          margin: 0 !important;
+                          padding: 0 !important;
+                        "
+                        frameborder="0"
+                        allowtransparency="true"
+                        scrolling="no"
+                        allowfullscreen=""
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="tradingview-widget-copyright" style="width: 100%">
+                  <a href="#" rel="noopener" target="_blank"
+                    ><span class="blue-text"></span>
+                    <span class="blue-text">Personal trading chart</span></a
+                  >
+                </div>
+                <script
+                  type="text/javascript"
+                  src="https://s3.tradingview.com/tv.js"
+                ></script>
+                <script type="text/javascript">
+                  new TradingView.widget({
+                    width: 1050,
+                    height: 500,
+                    symbol: "BITFINEX:BTCUSD",
+                    interval: "1",
+                    timezone: "Etc/UTC",
+                    theme: "Dark",
+                    style: "9",
+                    locale: "en",
+                    toolbar_bg: "#f1f3f6",
+                    enable_publishing: false,
+                    hide_side_toolbar: false,
+                    allow_symbol_change: true,
+                    calendar: true,
+                    studies: ["BB@tv-basicstudies"],
+                    container_id: "tradingview_f933e",
+                  });
+                </script>
+              </div>
+              <!-- TradingView Widget END -->
+
+              <h3 class="account_main">Account Overview</h3>
+
+              <div class="account_overview_wrap">
+                <div class="user-info">
+                  <div class="ctn-invesment-part ctn-invesment-part1">
+                    <p>Your username:</p>
+                    <h4 style="font-size: 0.7em !important">
+                      <%= req.user.email %>
+                    </h4>
+                  </div>
+                  <div class="ctn-invesment-part ctn-invesment-part2">
+                    <p>Registration Date:</p>
+                    <h4>
+                      <%= new Date(req.user.regDate).toLocaleDateString() %>
+                    </h4>
+                  </div>
+                  <div class="ctn-invesment-part ctn-invesment-part3">
+                    <p>Last Access:</p>
+                    <h4><%= new Date().toLocaleDateString() %></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="account_overview_wrap">
+                <div class="ctn-invesment-part ctn-invesment-part1">
+                  <span class="imageblock"></span>
+                  <h4>
+                    <%= req.user.currency%> <%=comma(req.user.active_deposit)%>
+                  </h4>
+                  <p>ACTIVE DEPOSITS</p>
+                  <div class="links"><a href="/deposit">Make A Deposit</a></div>
+                </div>
+                <div class="ctn-invesment-part ctn-invesment-part2">
+                  <span class="imageblock"></span>
+                  <h4><%= req.user.currency%> <%=comma(req.user.balance)%></h4>
+                  <p>YOUR BALANCE</p>
+                  <div class="links">
+                    <a href="/withdraw">Withdraw Funds</a>
+                  </div>
+                </div>
+                <div class="ctn-invesment-part ctn-invesment-part3">
+                  <span class="imageblock"></span>
+                  <h4>
+                    <%= req.user.currency%> <%=comma(req.user.total_earned)%>
+                  </h4>
+
+                  <p>TOTAL PROFIT</p>
+                  <div class="links"><a href="/history">My Deposits</a></div>
+                </div>
+                <div class="ctn-invesment-part ctn-invesment-part2">
+                  <span class="imageblock"></span>
+                  <h4>
+                    <%= req.user.currency%>
+                    <%=comma(req.user.pending_withdrawal)%>
+                  </h4>
+                  <p>PENDING</p>
+                </div>
+              </div>
+              <br />
+              <h3 class="account_main">Your Deposits/Withdrawals</h3>
+              <div class="account_stat">
+                <div class="contentLeft">
+                  <div class="ctn-inves-row invers-part5">
+                    <p>
+                      <%= req.user.currency%> <%=comma(req.user.last_deposit)%>
+                    </p>
+                    <h1>Last Deposit</h1>
+                  </div>
+
+                  <div class="ctn-inves-row invers-part8">
+                    <p>
+                      <%= req.user.currency%>
+                      <%=comma(req.user.total_withdraw)%>
+                    </p>
+                    <h1>Withdrawal</h1>
+                  </div>
+                </div>
+              </div>
+            </center>
+          </div>
+          <!--end column-70-->
+        </div>
+      </div>
+    </div>
+    <style>
+      .tradingview-widget-copyright {
+        font-size: 13px !important;
+        line-height: 32px !important;
+        text-align: center !important;
+        vertical-align: middle !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Trebuchet MS", Roboto,
+          Ubuntu, sans-serif !important;
+        color: #9db2bd !important;
+      }
+
+      .tradingview-widget-copyright .blue-text {
+        color: #2962ff !important;
+      }
+
+      .tradingview-widget-copyright a {
+        text-decoration: none !important;
+        color: #9db2bd !important;
+      }
+
+      .tradingview-widget-copyright a:visited {
+        color: #9db2bd !important;
+      }
+
+      .tradingview-widget-copyright a:hover .blue-text {
+        color: #1e53e5 !important;
+      }
+
+      .tradingview-widget-copyright a:active .blue-text {
+        color: #1848cc !important;
+      }
+
+      .tradingview-widget-copyright a:visited .blue-text {
+        color: #2962ff !important;
+      }
+    </style>
+    <style>
+      .tradingview-widget-copyright {
+        font-size: 13px !important;
+        line-height: 32px !important;
+        text-align: center !important;
+        vertical-align: middle !important;
+        font-family: "Trebuchet MS", Arial, sans-serif !important;
+        color: #9db2bd !important;
+      }
+
+      .tradingview-widget-copyright .blue-text {
+        color: #2962ff !important;
+      }
+
+      .tradingview-widget-copyright a {
+        text-decoration: none !important;
+        color: #9db2bd !important;
+      }
+
+      .tradingview-widget-copyright a:visited {
+        color: #9db2bd !important;
+      }
+
+      .tradingview-widget-copyright a:hover .blue-text {
+        color: #1e53e5 !important;
+      }
+
+      .tradingview-widget-copyright a:active .blue-text {
+        color: #1848cc !important;
+      }
+
+      .tradingview-widget-copyright a:visited .blue-text {
+        color: #2962ff !important;
+      }
+    </style>
+
+    <div class="contentBotContainer">
+      <div class="contentBotInner">
+        <div class="ctn-top-solid">
+          <h1>btc network</h1>
+          <h2>wallets:</h2>
+          <div class="solid-top">
+            <a href="https://www.coinbase.com/" class="solidTop1"></a>
+            <a href="https://blockchain.info/" class="solidTop2"></a>
+            <a href="https://xapo.com/" class="solidTop3"></a>
+            <a href="https://airbitz.co/" class="solidTop4"></a>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="ctn-bot-solid">
+          <p>Market Cap: <span>$77829716960.00</span></p>
+          <p>Hashrate: <span>7108353254.76</span></p>
+          <p>Difficulty: <span>888171856257</span></p>
+          <p>Total Blocks: <span>482882</span></p>
+          <p>Network Speed: <span>108.5 PH/s</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footerContainer">
+      <div class="footerInner">
+        <div class="ctn-footer-top">
+          <div class="ctn-ft-left">
+            <p>© 2022 bitcryptodailytrade.com All Rights Reserved.</p>
+          </div>
+          <div class="ctn-ft-mid">
+            <a href=""><img src="/dashboard/styles/images/ft-top-ic1.png" /></a>
+          </div>
+          <div class="ft-solid">
+            <a
+              href="https://www.facebook.com/VisualHyipcom/"
+              target="_blank"
+              class="per"
+            ></a>
+            <a href="https://twitter.com/" target="_blank" class="bit"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end bot footer -->
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".accordion>dl>dt>a").click(function () {
+          $(this).toggleClass("rotate0");
+        });
+        /*------- parse price --------*/
+        function parsePriceCrypto() {
+          returnString = "";
+
+          $.post(
+            "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,LTC,ETH,BCH,XRP&tsyms=USD",
+            function (data) {
+              $("#price_btc").text("$" + data["BTC"]["USD"]);
+              $("#price_ltc").text("$" + data["LTC"]["USD"]);
+              $("#price_eth").text("$" + data["ETH"]["USD"]);
+              $("#price_bch").text("$" + data["BCH"]["USD"]);
+              $("#price_xrp").text("$" + data["XRP"]["USD"]);
+            }
+          );
+        }
+        parsePriceCrypto();
+
+        setInterval(function () {
+          parsePriceCrypto();
+        }, 5000);
+      });
+
+      $(".language").click(function () {
+        $(this).toggleClass("active");
+      });
+
+      $(".mobileMenu").click(function () {
+        $(".menu").toggleClass("mobile");
+        $(this).toggleClass("rotate");
+      });
+    </script>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "google_translate_element"
+        );
+      }
+    </script>
+
+    <script
+      type="text/javascript"
+      src="https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit"
+    ></script>
+
+    <script src="//code.jivosite.com/widget/MhaelJoZJB" async></script>
+
+  </body>
+</html>

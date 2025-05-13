@@ -1,0 +1,296 @@
+<div id="preloader" class="loader">
+    <div class='sk-three-bounce'>
+        <div class='sk-bounce-1 sk-child'></div>
+        <div class='sk-bounce-2 sk-child'></div>
+        <div class='sk-bounce-3 sk-child'></div>
+    </div>
+</div>
+<div id="pjax-container">
+    <div id="block-content" class="page--cabinet">
+        <header class="header-bull header--cabinet">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="topline header__topline">
+                            <div class="topline__logo">
+                                <a href="/" class="logo" data-pjax>
+                                    <img src="/assets/img/logo-img.svg" alt="Golden" style="width: 180px;">
+                                </a>
+                            </div>
+                            <div class="topline__controls">
+                                <div class="dropdown topline__dropdown">
+                                    <a href="#" class="dropdown-toggle userdropdown topline__userdropdown"
+                                        id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="true">
+                                        johndoe
+                                        <span class="caret userdropdown__caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                        <li> <a href="?a=account" data-pjax>
+                                                Dashboard
+                                            </a>
+                                        </li>
+                                        <li> <a href="Support?a=support" data-pjax>
+                                                Support
+                                            </a>
+                                        </li>
+                                        <li> <a href="Logout?a=logout">
+                                                Log out
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div> <span class="burger header__burger" id="js-menu-burger">
+                                    <i class="fa fa-bars"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <nav class="menu header__menu" id="js-menu"> <a href="/dashboard" class="menu__link"
+                                id="js-sidebar-cabinet" data-pjax>
+                                Dashboard
+                            </a>
+                            <a href="/deposit" class="menu__link" id="js-sidebar-invest" data-pjax>
+                                Add Deposit
+                            </a>
+                            <a href="/withdraw" class="menu__link" id="js-sidebar-withdraw" data-pjax>
+                                Withdraw
+                            </a>
+                            <a href="/deposits" class="menu__link" id="js-sidebar-deposits" data-pjax>
+                                Deposits
+                            </a>
+                            <a href="/history" class="menu__link" id="js-sidebar-history" data-pjax>
+                                History
+                            </a>
+                            <a href="/settings" class="menu__link" id="js-sidebar-settings" data-pjax>
+                                Settings
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="content bagblack">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="card" style="margin-top: 30px">
+                            <div class="body block-header">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-8 col-sm-12">
+                                        <h2>Welcome, <%= req.user.username%>
+                                        </h2>
+                                        <ul class="breadcrumb p-l-0 p-b-0 ">
+                                            <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a>
+                                            </li>
+                                            <li class="breadcrumb-item active">My deposits</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6 col-md-4 col-sm-12 text-right">
+                                        <a href="/deposit">
+                                            <button
+                                                class="btn btn-primary btn-round btn-simple float-right hidden-xs m-l-10 btn-warning waves-effect">Make
+                                                an investment</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-xl-4 col-lg-4 col-md-12">
+                        <div class="card info-box-2">
+                            <div class="body">
+                                <div class="icon">
+                                    <img src="/assets/img/acc3.png" class="accico">
+                                </div>
+                                <div class="content">
+                                    <div class="text">ACTIVE DEPOSITS</div>
+                                    <div class="number">
+                                        <%= req.user.currency%>
+                                            <%=req.user.active_deposit%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12">
+                        <div class="card">
+                            <div class="body">
+                                <style>
+                                    input[type=radio] {
+                                        width: auto;
+                                        height: auto;
+                                    }
+
+                                    .customers {
+                                        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                                        border-collapse: collapse;
+                                        width: 100%;
+                                    }
+
+                                    .customers td,
+                                    .customers th {
+                                        border: 1px solid #ddd;
+                                        padding: 8px;
+                                    }
+
+                                    .customers tr:nth-child(even) {
+                                        background-color: #f2f2f2;
+                                    }
+
+                                    .customers th {
+                                        padding-top: 12px;
+                                        padding-bottom: 12px;
+                                        text-align: left;
+                                        background-color: #4CAF50;
+                                        color: white;
+                                    }
+                                </style>
+
+
+
+
+
+                                <table cellspacing="1" cellpadding="2" border=0 width=100% class=line>
+                                    <tr>
+                                        <td class=item>
+                                    <tr>
+                                        <td colspan=3 align=center style="color: #facd8a;"><b>Last 10 Deposit
+                                                Records</b></td>
+                                    </tr>
+
+                                    <table cellspacing=1 cellpadding=2 border=1 width=100%>
+
+                                        <tr>
+                                            <!--  <th class=inheader style="color: #facd8a;">AM</th> -->
+                                            <th class="inheader" width="200" style="color: #facd8a;">Amount Spent (<%=
+                                                    req.user.currency%>)
+                                            </th>
+                                            <th class="inheader" width="100" nowrap style="color: #facd8a;">Date</th>
+                                        </tr>
+                                        <% if(history.length===0){%>
+                                            <td colspan="4" style="border: 1px solid #ddd;padding: 8px;"><b>No deposits
+                                                    for this plan</b></td>
+                                            <%}else{%>
+                                                <% history.map(h=> {%>
+                                                    <tr>
+                                                        <td>
+                                                            <%= h.amount%>
+                                                        </td>
+                                                        <td>
+                                                            <%= new Date(h.date).toLocaleDateString()%>
+                                                        </td>
+                                                    </tr>
+                                                    <%})%>
+                                                        <%}%>
+                                                            </tbody>
+                                    </table>
+                                    <br>
+                                    <br>
+                                    </td>
+                                    </tr>
+                                </table>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+    </div>
+</div>
+</div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="row" style="margin-top:50px;">
+                    <div class="col-md-12">
+                        <div class="row equal">
+                            <div class="col-xl-8 col-lg-8 col-md-12 no-padding wow fadeInLeft" data-wow-delay="0.2s"
+                                style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;min-height: 180px;">
+                                <div class="incrop-left" style="min-height: 100%;">
+                                    <div class="incrop-left-img">
+                                        <img src="/assets/img/uk.png">
+                                        <h4 class="step__title" style="padding-bottom: 15px;color:#facd8a;">UK
+                                            Registered Company</h4>
+                                        <p><%= res.locals.sitename %> is a fully registered and licensed company in UK. <%= res.locals.sitename %>
+                                            is powered by the latest and most secure form of SSL data encryption to keep
+                                            all your data and information safe and secure.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="topline footer__topline">
+                            <a href="/" class="logo topline__logo">
+                                <img src="/assets/img/logo.png" alt="Golden" style="width: 180px;">
+                            </a>
+                            <nav class="menu topline__menu footer__menu"> <a href="/" class="menu__link" data-pjax>
+                                    Home
+                                </a>
+                                <a href="/about" class="menu__link" data-pjax>
+                                    About us
+                                </a>
+                                <a href="/investment" class="menu__link" data-pjax>
+                                    Investment
+                                </a>
+                                <a href="/partners" class="menu__link" data-pjax>
+                                    Partners
+                                </a>
+                                <a href="/terms" class="menu__link" data-pjax>
+                                    Terms
+                                </a>
+                                <a href="/contact" class="menu__link" data-pjax>
+                                    Contact us
+                                </a>
+                            </nav>
+                            <div class="footer__socfooter topline__controls" style="height: initial;">
+                                <a></a>
+                                <a></a>
+                                <a href="https://www.facebook.com" target="_blank">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="https://twitter.com" target="_blank">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="https://youtube.com" target="_blank">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__copyright">
+                    © 2021 <%= res.locals.sitename %> ALL RIGHTS RESERVED.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+
+<link rel="stylesheet" href="/assets/libs/bootstrap/fileinput.min.css">
+<script src="/assets/libs/bootstrap/bootstrap.min.js"></script>
+<script src="/assets/libs/bootstrap/fileinput.min.js"></script>
+<script>
+    addClass(document.getElementById('js-sidebar-deposits'), 'menu__link--active');
+
+</script>
+</div>

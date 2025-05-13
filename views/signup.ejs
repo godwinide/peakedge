@@ -1,0 +1,375 @@
+<div id="preloader" class="loader">
+  <div class="sk-three-bounce">
+    <div class="sk-bounce-1 sk-child"></div>
+    <div class="sk-bounce-2 sk-child"></div>
+    <div class="sk-bounce-3 sk-child"></div>
+  </div>
+</div>
+<div id="pjax-container">
+  <div id="block-content">
+    <section class="section section-auth bagblack textsite titlesite">
+      <div class="container bagblack textsite titlesite">
+        <div class="row mt-5 mb-5">
+          <div class="col-md-12">
+            <div class="b--shadow b--auth">
+              <div class="row">
+                <div class="col-sm-12 col-md-12">
+                  <div class="b--auth__left">
+                    <div class="text-center">
+                      <a href="/" class="logo" data-pjax="">
+                        <img
+                          src="/assets/img/logo-img.svg"
+                          style="width: 180px"
+                        />
+                      </a>
+                    </div>
+                    <div class="b--shadow__title-bordered">
+                      <div class="title-bordered__wrapper">
+                        <div class="title-bordered">
+                          CREATE YOUR ACCOUNT NOW
+                        </div>
+                      </div>
+                    </div>
+                    <%- include("./partials/messages") %>
+                    <form method="post" enctype="multipart/form-data">
+                      <div class="row">
+                        <div class="form-group col-md-4">
+                          <label>Fullname *</label>
+                          <input
+                            value="<%= typeof fullname != 'undefined' ? fullname : '' %>"
+                            type="text"
+                            name="fullname"
+                            id="fullname"
+                            oninput="checkName();"
+                            class="form-control"
+                            required
+                          />
+                          <span class="text-danger" id="nameoutput"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label>Username *</label>
+                          <input
+                            value="<%= typeof username != 'undefined' ? username : '' %>"
+                            id="username"
+                            type="text"
+                            name="username"
+                            oninput="checkUsername();"
+                            class="form-control"
+                            required
+                          />
+                          <span class="text-danger" id="usernameoutput"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label>E-mail *</label>
+                          <input
+                            value="<%= typeof email != 'undefined' ? email : '' %>"
+                            id="email"
+                            type="text"
+                            value=""
+                            name="email"
+                            oninput="checkMail();"
+                            class="form-control"
+                            required
+                          />
+                        </div>
+                        <span class="text-danger" id="emailoutput"></span>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-md-4">
+                          <label for="telephone_number"
+                            >Telephone Number *</label
+                          >
+                          <input
+                            value="<%= typeof phone != 'undefined' ? phone : '' %>"
+                            type="tel"
+                            name="phone"
+                            value=""
+                            class="form-control"
+                            id="telephone_number"
+                            required
+                          />
+                          <span class="text-danger" id="phoneoutput"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="gender">Gender *</label>
+                          <select
+                            name="gender"
+                            id="gender"
+                            class="form-control"
+                            required
+                          >
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="neither">Rather not Say</option>
+                          </select>
+                          <span class="text-danger" id="genderoutput"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="gender">Country *</label>
+                          <input
+                            value="<%= typeof country != 'undefined' ? country : '' %>"
+                            type="text"
+                            name="country"
+                            class="form-control"
+                            required
+                            placeholder="Country of Residence"
+                          />
+                          <span class="text-danger" id="countryoutput"></span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-md-4">
+                          <label for="currency">Currency *</label>
+                          <select
+                            name="currency"
+                            id="currency"
+                            class="form-control"
+                            required
+                          >
+                            <option value="USD">United States Dollar</option>
+                            <option value="BZD">Belize Dollar</option>
+                            <option value="EUR">Euro</option>
+                            <option value="JPY">Japanese Yen</option>
+                            <option value="GBP">British Pound Sterling</option>
+                            <option value="AUD">Australian Dollar</option>
+                            <option value="CAD">Canadian Dollar</option>
+                            <option value="CHF">Swiss Franc</option>
+                            <option value="CNY">Chinese Yuan</option>
+                            <option value="SEK">Swedish Krona</option>
+                            <option value="NZD">New Zealand Dollar</option>
+                            <option value="HKD">Hong Kong Dollar</option>
+                            <option value="SGD">Singapore Dollar</option>
+                            <option value="INR">Indian Rupee</option>
+                            <option value="KRW">South Korean Won</option>
+                            <option value="BRL">Brazilian Real</option>
+                            <option value="RUB">Russian Ruble</option>
+                            <option value="TRY">Turkish Lira</option>
+                            <option value="ZAR">South African Rand</option>
+                            <option value="MXN">Mexican Peso</option>
+                            <option value="PLN">Polish Zloty</option>
+                          </select>
+                          <span class="text-danger" id="genderoutput"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="security_question"
+                            >Security Question*</label
+                          >
+                          <select
+                            name="security_question"
+                            id="security_question"
+                            class="form-control"
+                            required
+                          >
+                            <option value="What is the name of your first pet">
+                              What is the name of your first pet
+                            </option>
+                            <option value="What was your childhood nickname?">
+                              What was your childhood nickname?
+                            </option>
+                            <option
+                              value="In what city or town was your first job?"
+                            >
+                              In what city or town was your first job?
+                            </option>
+                          </select>
+                          <span class="text-danger" id="genderoutput"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label>Security Answer</label>
+                          <input
+                            value="<%= typeof security_answer != 'undefined' ? security_answer : '' %>"
+                            id="security_answer"
+                            type="text"
+                            oninput="checksecurity_question();"
+                            value=""
+                            name="security_answer"
+                            class="form-control"
+                            required
+                          />
+                          <span
+                            class="text-danger"
+                            id="security_questionoutput"
+                          ></span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-md-6">
+                          <label>Your Password *</label>
+                          <input
+                            value="<%= typeof password != 'undefined' ? password : '' %>"
+                            id="password"
+                            type="password"
+                            oninput="checkPassword();"
+                            value=""
+                            name="password"
+                            class="form-control"
+                            required
+                          />
+                          <span class="text-danger" id="passwordoutput"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>Confirm Password *</label>
+                          <input
+                            value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+                            id="password2"
+                            type="password"
+                            oninput="checkConfirmPassword();"
+                            value=""
+                            name="password2"
+                            class="form-control"
+                            required
+                          />
+                          <span class="text-danger" id="cpasswordoutput"></span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="checkbox"
+                          name="agree"
+                          class="checkbox__input"
+                          id="terms"
+                          required
+                          checked
+                        />
+                        <label for="terms" class="checkbox__label"
+                          >I'm agree with
+                          <a href="/terms" data-pjax>
+                            <strong class="text--underline">
+                              Terms & Conditions
+                            </strong> </a
+                          >*</label
+                        >
+                      </div>
+                      <div class="form-group">
+                        <span class="text-white">
+                          Already have an account?
+                          <a href="/signin">Signin here</a>
+                        </span>
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="submit"
+                          name="signup"
+                          class="btn btn-warning btn-block"
+                          value="REGISTER"
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <link rel="stylesheet" href="/assets/libs/bootstrap/fileinput.min.css" />
+  <script src="/assets/libs/bootstrap/bootstrap.min.js"></script>
+  <script src="/assets/libs/bootstrap/fileinput.min.js"></script>
+
+  <script type="text/javascript">
+    var nameoutput = document.getElementById("nameoutput");
+    var emailoutput = document.getElementById("emailoutput");
+    var usernameoutput = document.getElementById("usernameoutput");
+    var phoneoutput = document.getElementById("phoneoutput");
+    var genderoutput = document.getElementById("genderoutput");
+    var passwordoutput = document.getElementById("passwordoutput");
+    var cpasswordoutput = document.getElementById("cpasswordoutput");
+
+    var fullname = document.regform.fullname;
+    var email = document.regform.email;
+    var username = document.regform.username;
+    var telephone_number = document.regform.telephone_number;
+    var gender = document.regform.gender;
+    var password = document.regform.password;
+    var confirm_password = document.regform.confirm_password;
+    var error = 0;
+
+    function checkName() {
+      if (fullname.value.length < 5) {
+        nameoutput.innerHTML = "Fullname must be more than 6 Characters";
+        fullname.style.backgroundColor = "red";
+        return false;
+        error = 1;
+      } else if (fullname.value.length > 5) {
+        fullname.style.backgroundColor = "lightgreen";
+        nameoutput.style.display = "none";
+        return true;
+        error = 0;
+      }
+    }
+
+    function checkMail() {
+      if (email.value.length < 5) {
+        emailoutput.innerHTML = "Please Enter a Valid Email";
+        email.style.backgroundColor = "red";
+        return false;
+        var error = 1;
+      } else {
+        email.style.backgroundColor = "lightgreen";
+        emailoutput.style.display = "none";
+        return true;
+        var error = 0;
+      }
+    }
+
+    function checkUsername() {
+      if (username.value.length == "") {
+        usernameoutput.innerHTML = "This Field is Required!";
+        username.style.backgroundColor = "red";
+        return false;
+        var error = 1;
+      } else {
+        username.style.backgroundColor = "lightgreen";
+        usernameoutput.style.display = "none";
+        return true;
+        var error = 0;
+      }
+    }
+
+    function checkPassword() {
+      if (password.value.length == "") {
+        passwordoutput.innerHTML = "Password Can not be Empty";
+        password.style.backgroundColor = "red";
+        return false;
+        var error = 1;
+      } else {
+        password.style.backgroundColor = "lightgreen";
+        passwordoutput.style.display = "none";
+        return true;
+        var error = 0;
+      }
+    }
+
+    function checkConfirmPassword() {
+      if (confirm_password.value.length == "") {
+        cpasswordoutput.innerHTML = "This Field is Required!";
+        confirm_password.style.backgroundColor = "red";
+        return false;
+        var error = 1;
+      } else if (password.value !== confirm_password.value) {
+        password.value.focus();
+        passwordoutput.innerHTML = "Passwords Do Not Match";
+        password.stye.backgroundColor = "red";
+        confirm_password.style.backgroundColor = "red";
+        return false;
+        var error = 1;
+      } else {
+        password.style.backgroundColor = "lightgreen";
+        confirm_password.style.backgroundColor = "lightgreen";
+        return true;
+        var error = 0;
+      }
+    }
+
+    function submitForm() {
+      if ((error = 1)) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  </script>
+</div>

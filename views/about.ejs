@@ -1,0 +1,293 @@
+<div id="preloader" class="loader">
+  <div class="sk-three-bounce">
+    <div class="sk-bounce-1 sk-child"></div>
+    <div class="sk-bounce-2 sk-child"></div>
+    <div class="sk-bounce-3 sk-child"></div>
+  </div>
+</div>
+<div id="pjax-container">
+  <div id="block-content" class="">
+    <header class="header-clean">
+      <div class="header__decors">
+        <div class="decor"></div>
+        <div class="decor"></div>
+        <div class="decor"></div>
+        <div class="decor"></div>
+        <div class="decor"></div>
+        <div class="decor"></div>
+        <div class="decor"></div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="topline header__topline">
+              <a href="/" class="logo topline__logo" width="100" data-pjax>
+                <img
+                  src="/assets/img/logo.png"
+                  alt="Golden"
+                  style="width: 180px"
+                />
+              </a>
+              <nav class="menu topline__menu header__menu" id="js-menu">
+                <a href="/" class="menu__link" id="js-menu-home" data-pjax>
+                  Home
+                </a>
+                <a
+                  href="/about"
+                  class="menu__link"
+                  id="js-menu-about"
+                  data-pjax
+                >
+                  About us
+                </a>
+                <a
+                  href="/investment"
+                  class="menu__link"
+                  id="js-menu-investment"
+                  data-pjax
+                >
+                  Investment
+                </a>
+                <a
+                  href="/partners"
+                  class="menu__link"
+                  id="js-menu-partners"
+                  data-pjax
+                >
+                  Partners
+                </a>
+                <a
+                  href="/contact"
+                  class="menu__link"
+                  id="js-menu-contact"
+                  data-pjax
+                >
+                  Contact us
+                </a>
+                <span class="dropdown menu__link">
+                  <span class="dropdown-toggle" data-toggle="dropdown">
+                    <img
+                      src="/assets/default/images/flags/en.svg"
+                      style="width: 20px"
+                    />
+                  </span>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="#" data-pjax>
+                        <img
+                          src="/assets/default/images/flags/en.svg"
+                          style="width: 20px"
+                          class="mr-1"
+                        />English</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" data-pjax>
+                        <img
+                          src="/assets/default/images/flags/ru.svg"
+                          style="width: 20px"
+                          class="mr-1"
+                        />Русский</a
+                      >
+                    </li>
+                  </ul>
+                </span>
+              </nav>
+              <div class="topline__controls">
+                <% if(req.user){%>
+                <div class="header__login">
+                  &nbsp;
+                  <a href="/dashboard" class="btn btn-warning" data-pjax
+                    >Dashboard</a
+                  >
+                </div>
+                <% }else{%>
+                <div class="header__login">
+                  &nbsp;
+                  <a href="/signin" class="btn btn-warning" data-pjax>Login</a>
+                  <a href="/signup" class="btn btn-signup" data-pjax>
+                    &nbsp; Register
+                  </a>
+                </div>
+                <%}%>
+                <span class="burger header__burger" id="js-menu-burger">
+                  <i class="fa fa-bars"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="header__content">
+              <h1 class="header__h1">About Us</h1>
+              <h2 class="header__h2">
+                We offer the ideas that raise your investment above the expected
+                income.
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="section textsite titlesite">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 section__title">
+            <h2 class="section__h2"></h2>
+            <h3 class="section__h3">Overview</h3>
+          </div>
+          <div class="col-md-6">
+            <p class="section__text">
+              <%= res.locals.sitename %> is a fairly significant player in the
+              modern cryptocurrency investment market and benefits primarily
+              from well-coordinated work within the company and productive
+              interaction with customers. In 2018, the company developed an
+              international investment platform to optimize the process of
+              working with many users around the world. This allows you to
+              relieve the pressure on your account manager, ensuring stable
+              operation no matter which time zone you are in.
+            </p>
+            <br />
+            <p class="section__text">
+              About . is a fairly significant player in the modern
+              cryptocurrency investment market and benefits primarily from
+              well-coordinated work within the company and productive
+              interaction with customers. In 2018, the company developed an
+              international investment platform to optimize the process of
+              working with many users around the world.
+            </p>
+          </div>
+          <div class="col-md-6"></div>
+        </div>
+      </div>
+    </section>
+    <section class="section textsite titlesite">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 section__title">
+            <h2 class="section__h2">What we do</h2>
+            <h3 class="section__h3"></h3>
+          </div>
+          <div class="col-md-6">
+            <img
+              src="/assets/img/about-what-we-do.png"
+              class="img-responsive section__img mt-3 mt-lg-0 mb-5 mb-md-0"
+              alt="What we do"
+            />
+          </div>
+          <div class="col-md-6">
+            <p class="section__text">
+              <%= res.locals.sitename %> is a leading bitcoin management
+              company. <%= res.locals.sitename %> is a full-cycle company: we
+              mine bitcoin, trade bitcoin, and we have our own cryptocurrency
+              exchange. This is our route.
+            </p>
+            <br />
+            <p class="section__text">
+              However, https://<%= res.locals.sitename %>.com is not limited to
+              buying / selling “gold assets” (including gold trading in the
+              Forex market) and is directly involved in the process of their
+              mining of bitcoin in Russia, Uzbekistan, Indonesia and China. An
+              appropriate license and all necessary permits have been obtained.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="row" style="margin-top: 50px">
+              <div class="col-md-12">
+                <div class="row equal">
+                  <div
+                    class="col-md-8 no-padding wow fadeInLeft"
+                    data-wow-delay="0.2s"
+                    style="
+                      visibility: visible;
+                      animation-delay: 0.2s;
+                      animation-name: fadeInLeft;
+                      min-height: 180px;
+                    "
+                  >
+                    <div class="incrop-left" style="min-height: 100%">
+                      <div class="incrop-left-img">
+                        <img src="/assets/img/uk.png" />
+                        <h4
+                          class="step__title"
+                          style="padding-bottom: 15px; color: #facd8a"
+                        >
+                          UK Registered Company
+                        </h4>
+                        <p>
+                          https://<%= res.locals.sitename %>.com is a fully
+                          registered and licensed company in UK. https://<%=
+                          res.locals.sitename %>.com is powered by the latest
+                          and most secure form of SSL data encryption to keep
+                          all your data and information safe and secure.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="topline footer__topline">
+                  <a href="/" class="logo topline__logo">
+                    <img
+                      src="/assets/img/logo.png"
+                      alt="Golden"
+                      style="width: 180px"
+                    />
+                  </a>
+                  <nav class="menu topline__menu footer__menu">
+                    <a href="/" class="menu__link" data-pjax> Home </a>
+                    <a href="/about" class="menu__link" data-pjax> About us </a>
+                    <a href="/investment" class="menu__link" data-pjax>
+                      Investment
+                    </a>
+                    <a href="/partners" class="menu__link" data-pjax>
+                      Partners
+                    </a>
+                    <a href="/terms" class="menu__link" data-pjax> Terms </a>
+                    <a href="/contact" class="menu__link" data-pjax>
+                      Contact us
+                    </a>
+                  </nav>
+                  <div
+                    class="footer__socfooter topline__controls"
+                    style="height: initial"
+                  >
+                    <a></a>
+                    <a></a>
+                    <a href="https://www.facebook.com/" target="_blank">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="https://youtube.com/" target="_blank">
+                      <i class="fa fa-youtube"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer__copyright">
+              © 2021 <%= res.locals.sitename %> ALL RIGHTS RESERVED.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <link rel="stylesheet" href="/assets/libs/bootstrap/fileinput.min.css" />
+  <script src="/assets/libs/bootstrap/bootstrap.min.js"></script>
+  <script src="/assets/libs/bootstrap/fileinput.min.js"></script>
+  <script>
+    addClass(document.getElementById("js-menu-about"), "menu__link--active");
+  </script>
+</div>

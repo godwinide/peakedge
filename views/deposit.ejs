@@ -1,0 +1,552 @@
+<div id="preloader" class="loader">
+  <div class="sk-three-bounce">
+    <div class="sk-bounce-1 sk-child"></div>
+    <div class="sk-bounce-2 sk-child"></div>
+    <div class="sk-bounce-3 sk-child"></div>
+  </div>
+</div>
+<div id="pjax-container">
+  <div id="block-content" class="page--cabinet">
+    <header class="header-bull header--cabinet">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="topline header__topline">
+              <div class="topline__logo">
+                <a href="/" class="logo" data-pjax>
+                  <img
+                    src="/assets/img/logo-img.svg"
+                    alt="Golden"
+                    style="width: 180px"
+                  />
+                </a>
+              </div>
+              <div class="topline__controls">
+                <div class="dropdown topline__dropdown">
+                  <a
+                    href="#"
+                    class="dropdown-toggle userdropdown topline__userdropdown"
+                    id="userDropdown"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="true"
+                  >
+                    <%= req.user.username%>
+                    <span class="caret userdropdown__caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                    <li><a href="/dashboard" data-pjax> Dashboard </a></li>
+                    <li><a href="/contact" data-pjax> Support </a></li>
+                    <li><a href="/logout"> Log out </a></li>
+                  </ul>
+                </div>
+                <span class="burger header__burger" id="js-menu-burger">
+                  <i class="fa fa-bars"></i>
+                </span>
+              </div>
+            </div>
+            <nav class="menu header__menu" id="js-menu">
+              <a
+                href="/dashboard"
+                class="menu__link"
+                id="js-sidebar-cabinet"
+                data-pjax
+              >
+                Dashboard
+              </a>
+              <a
+                href="/deposit"
+                class="menu__link"
+                id="js-sidebar-invest"
+                data-pjax
+              >
+                Add Deposit
+              </a>
+              <a
+                href="/withdraw"
+                class="menu__link"
+                id="js-sidebar-withdraw"
+                data-pjax
+              >
+                Withdraw
+              </a>
+              <a
+                href="/deposits"
+                class="menu__link"
+                id="js-sidebar-deposits"
+                data-pjax
+              >
+                Deposits
+              </a>
+              <a
+                href="/history"
+                class="menu__link"
+                id="js-sidebar-history"
+                data-pjax
+              >
+                History
+              </a>
+              <a
+                href="/settings"
+                class="menu__link"
+                id="js-sidebar-settings"
+                data-pjax
+              >
+                Settings
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <link rel="stylesheet" href="/assets/css/plans.css" />
+    <section class="content bagblack">
+      <div class="container">
+        <div class="row clearfix">
+          <div class="col-lg-12">
+            <div class="card" style="margin-top: 30px">
+              <div class="body block-header">
+                <div class="row">
+                  <div class="col-lg-6 col-md-8 col-sm-12">
+                    <h2>Welcome, <%= req.user.username%></h2>
+                    <ul class="breadcrumb p-l-0 p-b-0">
+                      <li class="breadcrumb-item">
+                        <a href="/"><i class="fa fa-home"></i></a>
+                      </li>
+                      <li class="breadcrumb-item">
+                        <a href="/dashboard">Dashboard</a>
+                      </li>
+                      <li class="breadcrumb-item active">Make an Investment</li>
+                    </ul>
+                  </div>
+                  <div class="col-lg-6 col-md-4 col-sm-12 text-right">
+                    <a href="/deposit">
+                      <button
+                        class="btn btn-primary btn-round btn-simple float-right hidden-xs m-l-10 btn-warning waves-effect"
+                      >
+                        Make an investment
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form
+          method="post"
+          name="spendform"
+          id="spendform"
+          action="/make-deposit"
+        >
+          <div class="row clearfix">
+            <div class="col-xl-4 col-lg-4 col-md-4" style="padding: 0px">
+              <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="card" style="min-height: 428px">
+                  <div class="headeraccount">
+                    <h2>Make an <strong>Investment</strong></h2>
+                  </div>
+                  <div class="body">
+                    <h2 class="card-inside-title">Deposit amount</h2>
+                    <br />
+                    <input
+                      type="text"
+                      name="amount"
+                      value="200.00"
+                      class="calculate-amount form-controlamount"
+                      style="font-size: 14px; padding: 10px 22px"
+                    />
+                    <br />
+                    <br />
+                    <div class="col text-center hide-xs">
+                      <button
+                        name="makedeposit"
+                        type="submit"
+                        class="btn btn-primary btn-round btn-simple float-right m-l-10 btn-warning waves-effect"
+                      >
+                        Make deposit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-12 col-md-12 hide-xs">
+                <div class="card">
+                  <div class="headeraccount">
+                    <h2><strong>Available</strong> Balance</h2>
+                  </div>
+                  <div class="body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h2 class="m-b-0">
+                          <%= req.user.currency%> <%= req.user.balance%>
+                        </h2>
+                        <p>Account balance</p>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="tabletwo table-hover m-b-0">
+                        <tbody>
+                          <tr>
+                            <th>
+                              <img
+                                src="/assets/pay2/18.png"
+                                style="width: 20px"
+                              />
+                            </th>
+                            <td>PerfectMoney</td>
+                            <td class="text-right">
+                              <span id="pay18b">&nbsp;</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              <img
+                                src="/assets/pay2/43.png"
+                                style="width: 20px"
+                              />
+                            </th>
+                            <td>Payeer</td>
+                            <td class="text-right">
+                              <span id="pay43b">&nbsp;</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              <img
+                                src="/assets/pay2/48.png"
+                                style="width: 20px"
+                              />
+                            </th>
+                            <td>Bitcoin</td>
+                            <td class="text-right">
+                              <span id="pay48b">&nbsp;</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              <img
+                                src="/assets/pay2/68.png"
+                                style="width: 20px"
+                              />
+                            </th>
+                            <td>Litecoin</td>
+                            <td class="text-right">
+                              <span id="pay68b">&nbsp;</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              <img
+                                src="/assets/pay2/79.png"
+                                style="width: 20px"
+                              />
+                            </th>
+                            <td>Dogecoin</td>
+                            <td class="text-right">
+                              <span id="pay79b">&nbsp;</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              <img
+                                src="/assets/pay2/69.png"
+                                style="width: 20px"
+                              />
+                            </th>
+                            <td>Ethereum</td>
+                            <td class="text-right">
+                              <span id="pay69b">&nbsp;</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              <img
+                                src="/assets/pay2/77.png"
+                                style="width: 20px"
+                              />
+                            </th>
+                            <td>Bitcoin Cash</td>
+                            <td class="text-right">
+                              <span id="pay77b">&nbsp;</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-8 col-lg-8 col-md-8">
+              <div class="card" style="min-height: 428px">
+                <div class="headeraccount">
+                  <h2><strong>Investment</strong> Plan</h2>
+                </div>
+                <div class="body">
+                  <div class="row" id="planselectz">
+                    <div
+                      class="col-xl-4 col-lg-4 col-md-12 col-sm-12"
+                      data-wow-duration="1s"
+                      data-wow-delay="0s"
+                      cellspacing="0"
+                      style="
+                        visibility: visible;
+                        animation-duration: 1s;
+                        animation-delay: 0s;
+                        animation-name: fadeInUp;
+                        padding-bottom: 30px;
+                      "
+                    >
+                      <input
+                        id="plan1"
+                        type="radio"
+                        name="h_id"
+                        value="1"
+                        checked
+                        onclick="updateCompound()"
+                      />
+                      <label class="counterz" for="plan1">
+                        <div class="plans">
+                          <div class="plan_details text-center">
+                            <div class="plan_title">
+                              10% after 24 hours Plan
+                            </div>
+                            <div class="percentage">10.00%</div>
+                            <p class="profit_duration">Profit</p>
+                            <ul class="list-items">
+                              <li class="list-item">Minimum $200</li>
+                              <li class="list-item">Maximum $1999</li>
+                              <!-- <li class="list-item"><a href="javascript:openCalculator('1')">Calculate your profit &gt;&gt;</a></li> -->
+                            </ul>
+                            <div class="plans_btn">
+                              <a class="btnplan btn-deposit">Select Plan</a>
+                            </div>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                    <div
+                      class="col-xl-4 col-lg-4 col-md-12 col-sm-12"
+                      data-wow-duration="1s"
+                      data-wow-delay="0s"
+                      cellspacing="0"
+                      style="
+                        visibility: visible;
+                        animation-duration: 1s;
+                        animation-delay: 0s;
+                        animation-name: fadeInUp;
+                        padding-bottom: 30px;
+                      "
+                    >
+                      <input
+                        id="plan2"
+                        type="radio"
+                        name="h_id"
+                        value="2"
+                        onclick="updateCompound()"
+                      />
+                      <label class="counterz" for="plan2">
+                        <div class="plans">
+                          <div class="plan_details text-center">
+                            <div class="plan_title">
+                              30% after 48 hours Plan
+                            </div>
+                            <div class="percentage">30.00%</div>
+                            <p class="profit_duration">Profit</p>
+                            <ul class="list-items">
+                              <li class="list-item">Minimum $2000</li>
+                              <li class="list-item">Maximum $9999</li>
+                              <!-- <li class="list-item"><a href="javascript:openCalculator('2')">Calculate your profit &gt;&gt;</a></li> -->
+                            </ul>
+                            <div class="plans_btn">
+                              <a class="btnplan btn-deposit">Select Plan</a>
+                            </div>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                    <div
+                      class="col-xl-4 col-lg-4 col-md-12 col-sm-12"
+                      data-wow-duration="1s"
+                      data-wow-delay="0s"
+                      cellspacing="0"
+                      style="
+                        visibility: visible;
+                        animation-duration: 1s;
+                        animation-delay: 0s;
+                        animation-name: fadeInUp;
+                        padding-bottom: 30px;
+                      "
+                    >
+                      <input
+                        id="plan3"
+                        type="radio"
+                        name="h_id"
+                        value="3"
+                        onclick="updateCompound()"
+                      />
+                      <label class="counterz" for="plan3">
+                        <div class="plans">
+                          <div class="plan_details text-center">
+                            <div class="plan_title">60% after 7 days Plan</div>
+                            <div class="percentage">60.00%</div>
+                            <p class="profit_duration">Profit</p>
+                            <ul class="list-items">
+                              <li class="list-item">Minimum $10000</li>
+                              <li class="list-item">Maximum $0</li>
+                              <!-- <li class="list-item"><a href="javascript:openCalculator('3')">Calculate your profit &gt;&gt;</a></li> -->
+                            </ul>
+                            <div class="plans_btn">
+                              <a class="btnplan btn-deposit">Select Plan</a>
+                            </div>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="col text-center hide-sm">
+                    <button
+                      name="makedeposit"
+                      type="submit"
+                      class="btn btn-primary btn-round btn-simple float-right m-l-10 btn-warning waves-effect"
+                    >
+                      Make deposit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="row" style="margin-top: 50px">
+              <div class="col-md-12">
+                <div class="row equal">
+                  <div
+                    class="col-xl-8 col-lg-8 col-md-12 no-padding wow fadeInLeft"
+                    data-wow-delay="0.2s"
+                    style="
+                      visibility: visible;
+                      animation-delay: 0.2s;
+                      animation-name: fadeInLeft;
+                      min-height: 180px;
+                    "
+                  >
+                    <div class="incrop-left" style="min-height: 100%">
+                      <div class="incrop-left-img">
+                        <img src="/assets/img/uk.png" />
+                        <h4
+                          class="step__title"
+                          style="padding-bottom: 15px; color: #facd8a"
+                        >
+                          UK Registered Company
+                        </h4>
+                        <p>
+                          capttrade.eni-n.com is a fully registered and licensed
+                          company in UK. capttrade.eni-n.com is powered by the
+                          latest and most secure form of SSL data encryption to
+                          keep all your data and information safe and secure.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="topline footer__topline">
+                  <a href="/" class="logo topline__logo">
+                    <img
+                      src="/assets/img/logo.png"
+                      alt="Golden"
+                      style="width: 180px"
+                    />
+                  </a>
+                  <nav class="menu topline__menu footer__menu">
+                    <a href="/" class="menu__link" data-pjax> Home </a>
+                    <a href="/about" class="menu__link" data-pjax> About us </a>
+                    <a href="/investment" class="menu__link" data-pjax>
+                      Investment
+                    </a>
+                    <a href="/partners" class="menu__link" data-pjax>
+                      Partners
+                    </a>
+                    <a href="/terms" class="menu__link" data-pjax> Terms </a>
+                    <a href="/contact" class="menu__link" data-pjax>
+                      Contact us
+                    </a>
+                  </nav>
+                  <div
+                    class="footer__socfooter topline__controls"
+                    style="height: initial"
+                  >
+                    <a></a>
+                    <a></a>
+                    <a href="https://www.facebook.com" target="_blank">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="https://youtube.com" target="_blank">
+                      <i class="fa fa-youtube"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="footer__copyright">
+              © 2021 <%= res.locals.sitename %>. ALL RIGHTS RESERVED.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <link rel="stylesheet" href="/assets/libs/bootstrap/fileinput.min.css" />
+  <script src="/assets/libs/bootstrap/bootstrap.min.js"></script>
+  <script src="/assets/libs/bootstrap/fileinput.min.js"></script>
+  <script src="/assets/libs/jquery/jquery-1.9.1.min.js"></script>
+  <script>
+    document.write(
+      "<script type='text/javascript' src='/assets/js/data.js?v=" +
+        Date.now() +
+        "'><\/script>"
+    );
+  </script>
+
+  <script>
+    addClass(
+      document.getElementById("js-sidebar-invest"),
+      "menu__link--active"
+    );
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(":radio").change(function () {
+        $(":radio[name=" + this.name + "]")
+          .next("label")
+          .removeClass("selexty");
+        $(this).next("label").addClass("selexty");
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $("input:radio:checked").next("label").addClass("selexty");
+    });
+  </script>
+</div>

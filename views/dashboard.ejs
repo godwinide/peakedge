@@ -1,0 +1,424 @@
+<div id="preloader" class="loader">
+    <div class='sk-three-bounce'>
+        <div class='sk-bounce-1 sk-child'></div>
+        <div class='sk-bounce-2 sk-child'></div>
+        <div class='sk-bounce-3 sk-child'></div>
+    </div>
+</div>
+<div id="pjax-container">
+    <div id="block-content" class="page--cabinet">
+        <header class="header-bull header--cabinet">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="topline header__topline">
+                            <div class="topline__logo">
+                                <a href="/" class="logo" data-pjax>
+                                    <img src="/assets/img/logo-img.svg" alt="Golden" style="width: 180px;">
+                                </a>
+                            </div>
+                            <div class="topline__controls">
+                                <div class="dropdown topline__dropdown">
+                                    <a href="#" class="dropdown-toggle userdropdown topline__userdropdown"
+                                        id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="true">
+                                        <%= req.user.username%>
+                                            <span class="caret userdropdown__caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                        <li> <a href="/dashboard" data-pjax>
+                                                Dashboard
+                                            </a>
+                                        </li>
+                                        <li> <a href="/contact" data-pjax>
+                                                Support
+                                            </a>
+                                        </li>
+                                        <li> <a href="/logout">
+                                                Log out
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div> <span class="burger header__burger" id="js-menu-burger">
+                                    <i class="fa fa-bars"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <nav class="menu header__menu" id="js-menu"> <a href="/dashboard" class="menu__link"
+                                id="js-sidebar-cabinet" data-pjax>
+                                Dashboard
+                            </a>
+                            <a href="/deposit" class="menu__link" id="js-sidebar-invest" data-pjax>
+                                Add Deposit
+                            </a>
+                            <a href="/withdraw" class="menu__link" id="js-sidebar-withdraw" data-pjax>
+                                Withdraw
+                            </a>
+                            <a href="/deposits" class="menu__link" id="js-sidebar-deposits" data-pjax>
+                                Deposits
+                            </a>
+                            <a href="/history" class="menu__link" id="js-sidebar-history" data-pjax>
+                                History
+                            </a>
+                            <a href="/settings" class="menu__link" id="js-sidebar-settings" data-pjax>
+                                Settings
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="content bagblack">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="card" style="margin-top: 30px">
+                            <div class="body block-header">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-8 col-sm-12">
+                                        <h2>Welcome, <%=req.user.username%>
+                                        </h2>
+                                        <ul class="breadcrumb p-l-0 p-b-0 ">
+                                            <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a>
+                                            </li>
+                                            <li class="breadcrumb-item active">Dashboard</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6 col-md-4 col-sm-12 text-right">
+                                        <a href="/deposit">
+                                            <button
+                                                class="btn btn-primary btn-round btn-simple float-right hidden-xs m-l-10 btn-warning waves-effect">Make
+                                                an investment</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <iframe id="tradingview_9e3ef"
+                    src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_9e3ef&amp;symbol=BITFINEX%3ABTCUSD&amp;interval=1&amp;hidesidetoolbar=0&amp;symboledit=1&amp;saveimage=1&amp;toolbarbg=f1f3f6&amp;calendar=1&amp;studies=BB%40tv-basicstudies&amp;theme=Dark&amp;style=9&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=bitcryptodailytrade.com&amp;utm_medium=widget_new&amp;utm_campaign=chart&amp;utm_term=BITFINEX%3ABTCUSD"
+                    style="width: 90%; height: 30em; margin: 2em !important; padding: 0 !important;" frameborder="0"
+                    allowtransparency="true" scrolling="no" allowfullscreen=""></iframe>
+
+                <div class="row clearfix">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card info-box-2">
+                            <div class="body" style="padding: 10px;">
+                                <div class="icon">
+                                    <img src="/assets/img/acc1.png" class="accico">
+                                </div>
+                                <div class="content">
+                                    <div class="text">EARNED TOTAL</div>
+                                    <div class="number">$<%=comma(req.user.total_earned)%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card info-box-2">
+                            <div class="body" style="padding: 10px;">
+                                <div class="icon">
+                                    <img src="/assets/img/acc1.png" class="accico">
+                                </div>
+                                <div class="content">
+                                    <div class="text">PENDING</div>
+                                    <div class="number">$<%=comma(req.user.pending)%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card info-box-2">
+                            <div class="body" style="padding: 10px;">
+                                <div class="icon">
+                                    <img src="/assets/img/acc2.png" class="accico">
+                                </div>
+                                <div class="content">
+                                    <div class="text">TOTAL DEPOSITS</div>
+                                    <div class="number">$<%=comma(req.user.total_deposit)%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card info-box-2">
+                            <div class="body" style="padding: 10px;">
+                                <div class="icon">
+                                    <img src="/assets/img/acc3.png" class="accico">
+                                </div>
+                                <div class="content">
+                                    <div class="text">ACTIVE DEPOSIT</div>
+                                    <div class="number">$<%=comma(req.user.active_deposit)%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card info-box-2">
+                            <div class="body" style="padding: 10px;">
+                                <div class="icon">
+                                    <img src="/assets/img/acc4.png" class="accico">
+                                </div>
+                                <div class="content">
+                                    <div class="text">TOTAL WITHDRAW</div>
+                                    <div class="number">$<%=comma(req.user.total_withdraw)%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card info-box-2">
+                            <div class="body" style="padding: 10px;">
+
+                                <div class="content">
+                                    <div class="text">ACCOUNT PLAN</div>
+                                    <div class="number">
+                                        <%=req.user.account_plan%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="col-xl-12 col-lg-12 col-md-12" style="padding: 0px">
+                            <div class="card">
+                                <div class="headeraccount">
+                                    <h2><strong>Financial</strong> Statistics</h2>
+                                </div>
+                                <!-- TradingView Widget BEGIN -->
+                                <div class="tradingview-widget-container">
+                                    <div id="tradingview_02a91"></div>
+                                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                                    <script type="text/javascript">
+                                        new TradingView.widget(
+                                            {
+                                                "width": 320,
+                                                "height": 610,
+                                                "symbol": "BITBAY:BTCUSD",
+                                                "timezone": "Etc/UTC",
+                                                "theme": "dark",
+                                                "style": "1",
+                                                "locale": "en",
+                                                "toolbar_bg": "#f1f3f6",
+                                                "enable_publishing": false,
+                                                "withdateranges": true,
+                                                "range": "YTD",
+                                                "hide_side_toolbar": false,
+                                                "allow_symbol_change": true,
+                                                "watchlist": [
+                                                    "BITBAY:BTCUSD"
+                                                ],
+                                                "details": true,
+                                                "hotlist": true,
+                                                "calendar": true,
+                                                "container_id": "tradingview_02a91"
+                                            }
+                                        );
+                                    </script>
+                                </div>
+                                <!-- TradingView Widget END -->
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12" style="padding: 0px">
+                            <a href="?a=referallinks">
+                                <button class="btn btn-primary btn-simple btn-round btn-warning waves-effect"
+                                    style="width: 100%;margin-top: -5px;">Promotional materials</button>
+                                <br>
+                                <br>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12">
+                        <div class="col-xl-12 col-lg-12 col-md-12" style="padding: 0px">
+                            <div class="card">
+                                <div class="headeraccount">
+                                    <h2><strong>Quick </strong> Info</h2>
+                                </div>
+                                <div class="body">
+                                    <div class="hide-sm">
+                                        <div style="border-bottom: 1px solid #26323B; padding: 10px 20px">Minimum
+                                            Deposit
+                                            <br><b>$300</b>
+                                        </div>
+
+                                        <div style="border-bottom: 1px solid #26323B; padding: 10px 20px">Minimum
+                                            Withdrawal for Crypto
+                                            <br><b>$200</b>
+                                        </div>
+                                        <div style="border-bottom: 1px solid #26323B; padding: 10px 20px">Minimum
+                                            Withdrawal for USD
+                                            <br><b>$200</b>
+                                        </div>
+                                        <b>Within 48 hours</b>
+                                    </div>
+                                    <div style="border-bottom: 1px solid #26323B; padding: 10px 20px">Deposits in
+                                        Cryptocurrencies visible
+                                        <br><b>After 3 Blockchain confirmations</b>
+                                    </div>
+                                    <div style="border-bottom: 1px solid #26323B; padding: 10px 20px">Deposits in USD
+                                        (Payeer, PM)
+                                        <br><b>Adding automatically</b>
+                                    </div>
+                                    <div style="border-bottom: 1px solid #26323B; padding: 10px 20px">Referral
+                                        Commission
+                                        <br><b>8%-3%-2%</b>
+                                    </div>
+                                    <div style="padding: 10px 20px">Representative Commission
+                                        <br><b>10%-3%-2%</b>
+                                    </div>
+                                </div>
+                                <table class="tabletwo table-hover m-b-0 hide-xs">
+                                    <tbody>
+                                        <tr>
+                                            <td>Minimum Deposit</td>
+                                            <th>$200</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Minimum Withdrawal for Crypto</td>
+                                            <th>$200</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Minimum Withdrawal for USD</td>
+                                            <th>$0.01</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Withdrawal Time</td>
+                                            <th>Instant</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Deposits in Cryptocurrencies visible</td>
+                                            <th>After 1 Blockchain confirmations</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Deposits in USD (Payeer, PM)</td>
+                                            <th>Adding automatically</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Referral Commission</td>
+                                            <th>7%</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12" style="padding: 0px">
+                        <div class="card overflowhidden weather2">
+                            <div class="body city-selected l-khaki">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="city">Your referral url</div>
+                                        <div class="col-md-6"
+                                            style="padding-left: 0px;padding-top: 10px;color: #facd8a;">
+                                            <div class="night" style="font-size: 16px">https://<%= res.locals.sitename %>.site/?ref=
+                                                <%=req.user.username%>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right" style="padding-right: 0px;">
+                                            <button class="btn btn-warning js-copy"
+                                                data-text="https://<%= res.locals.sitename %>.site /?ref=<%=req.user.username%>">COPY
+                                                LINK</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row" style="margin-top:50px;">
+                        <div class="col-md-12">
+                            <div class="row equal">
+                                <div class="col-md-8 no-padding wow fadeInLeft" data-wow-delay="0.2s"
+                                    style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;min-height: 180px;">
+                                    <div class="incrop-left" style="min-height: 100%;">
+                                        <div class="incrop-left-img">
+                                            <img src="/assets/img/uk.png">
+                                            <h4 class="step__title" style="padding-bottom: 15px;color:#facd8a;">UK
+                                                Registered Company</h4>
+                                            <p><%= res.locals.sitename %> is a fully registered and licensed company in UK.
+                                                <%= res.locals.sitename %> is powered by the latest and most secure form of SSL data
+                                                encryption to keep all your data and information safe and secure.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 no-padding wow fadeInRight" data-wow-delay="0.4s"
+                                    style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInRight;min-height: 180px;">
+                                    <div class="incrop-right" style="min-height: 100%;">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="topline footer__topline">
+                                <a href="/" class="logo topline__logo">
+                                    <img src="/assets/img/logo.png" alt="Golden" style="width: 180px;">
+                                </a>
+                                <nav class="menu topline__menu footer__menu"> <a href="/" class="menu__link" data-pjax>
+                                        Home
+                                    </a>
+                                    <a href="/about" class="menu__link" data-pjax>
+                                        About us
+                                    </a>
+                                    <a href="/investment" class="menu__link" data-pjax>
+                                        Investment
+                                    </a>
+                                    <a href="/partners" class="menu__link" data-pjax>
+                                        Partners
+                                    </a>
+                                    <a href="/terms" class="menu__link" data-pjax>
+                                        Terms
+                                    </a>
+                                    <a href="/contact" class="menu__link" data-pjax>
+                                        Contact us
+                                    </a>
+                                </nav>
+                                <div class="footer__socfooter topline__controls" style="height: initial;">
+                                    <a></a>
+                                    <a></a>
+                                    <a href="https://www.facebook.com" target="_blank"> <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a href="https://twitter.com" target="_blank"> <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a href="https://youtube.com" target="_blank"> <i class="fa fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer__copyright">© 2021 <%= res.locals.sitename %> ALL RIGHTS RESERVED.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<link rel="stylesheet" href="/assets/libs/bootstrap/fileinput.min.css">
+<script src="/assets/libs/bootstrap/bootstrap.min.js"></script>
+<script src="/assets/libs/bootstrap/fileinput.min.js"></script>
+<script>
+    addClass(document.getElementById('js-sidebar-cabinet'), 'menu__link--active');
+</script>
+<script>
+    document.write("<script type='text/javascript' src='/assets/js/data.js?v=" + Date.now() + "'><\/script>");
+</script>
+</div>

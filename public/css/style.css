@@ -1,0 +1,15 @@
+* {
+    font-family: 'Noto Sans', sans-serif !important;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif !important;
+
+}
+
+.bannerinsideInner,
+.inside_inner,
+.member_wrap,
+.wrapper-account {
+    max-width: 1500px !important;
+}
