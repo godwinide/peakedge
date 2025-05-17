@@ -65,8 +65,8 @@ router.post("/withdraw", ensureAuthenticated, async (req, res) => {
             req.flash("error_msg", "Please enter amount to withdraw");
             return res.redirect("/withdraw");
         }
-        if (realamount < 100000) {
-            req.flash("error_msg", "Minimum withdrawal amount is 100000");
+        if (realamount < 200) {
+            req.flash("error_msg", "Minimum withdrawal amount is 200");
             return res.redirect("/withdraw");
         }
         if (req.user.balance < realamount || realamount < 0) {
