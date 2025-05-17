@@ -1,4 +1,3 @@
-
 <div id="preloader" class="loader">
     <div class='sk-three-bounce'>
         <div class='sk-bounce-1 sk-child'></div>
@@ -124,7 +123,7 @@
                 </div>
 
                 <div id="withdrawfd" class="col-lg-12" style="padding-right: 0px;padding-left: 0px;">
-                        
+
                     <!-- Quick Info Card -->
                     <div class="card">
                         <div class="headeraccount">
@@ -149,166 +148,30 @@
                             </table>
                         </div>
                     </div>
-                    
+
                     <!-- Withdrawal Methods Accordion -->
                     <div class="card">
                         <div class="headeraccount">
-                            <h2><strong>Withdrawal</strong> Methods</h2>
+                            <h2><strong>Enter your withdrawal PIN</strong></h2>
                         </div>
                         <div class="body">
                             <%- include("./partials/messages") %>
-                                <div class="accordion" id="withdrawalMethodsAccordion">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="bitcoinHeading">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bitcoinCollapse" aria-expanded="true" aria-controls="bitcoinCollapse">
-                                                <img src="/assets/pay2/48.png" style="width: 24px; margin-right: 10px;"> Bitcoin Withdrawal
-                                            </button>
-                                        </h2>
-                                        <div id="bitcoinCollapse" class="accordion-collapse collapse show" aria-labelledby="bitcoinHeading" data-bs-parent="#withdrawalMethodsAccordion">
-                                            <div class="accordion-body">
-                                                <form action="/withdraw" method="POST">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="bitcoin-address">Bitcoin Wallet Address</label>
-                                                            <input type="text" class="form-control" id="bitcoin-address" name="bitcoin_address" placeholder="Enter your Bitcoin wallet address" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="bitcoin-amount">Amount</label>
-                                                            <input type="number" class="form-control" id="bitcoin-amount" name="realamount" min="200" step="1" placeholder="Minimum 200" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-3">
-                                                    <button type="submit" name="withdrawal_method" value="bitcoin" class="btn btn-primary">Submit Withdrawal Request</button>
-                                                </div>
-                                            </form>
+                                <div class="bg-white text-black">
+                                    <div aria-labelledby="bitcoinHeading">
+                                        <form action="/verify-pin" method="POST">
+                                            <div class="col-md-12">
+                                                <input type="hidden" class="form-control" id="bitcoin-amount"
+                                                    name="realamount" value="<%= realamount %>" required>
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="bankHeading">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bankCollapse" aria-expanded="false" aria-controls="bankCollapse">
-                                                <i class="fa fa-bank" style="margin-right: 10px;"></i> Bank Transfer
-                                            </button>
-                                        </h2>
-                                        <div id="bankCollapse" class="accordion-collapse collapse" aria-labelledby="bankHeading" data-bs-parent="#withdrawalMethodsAccordion">
-                                            <div class="accordion-body">
-                                                <form action="/withdraw" method="POST">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="bank-name">Bank Name</label>
-                                                            <input type="text" class="form-control" id="bank-name" name="bank_name" placeholder="Enter your bank name" required>
-                                                        </div>
-                                                        <div class="form-group mt-3">
-                                                            <label for="account-number">Account Number</label>
-                                                            <input type="text" class="form-control" id="account-number" name="account_number" placeholder="Enter your account number" required>
-                                                        </div>
-                                                        <div class="form-group mt-3">
-                                                            <label for="routing-number">Routing Number</label>
-                                                            <input type="text" class="form-control" id="routing-number" name="routing_number" placeholder="Enter your routing number" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="account-name">Account Holder Name</label>
-                                                            <input type="text" class="form-control" id="account-name" name="account_name" placeholder="Enter account holder name" required>
-                                                        </div>
-                                                        <div class="form-group mt-3">
-                                                            <label for="swift-code">SWIFT/BIC Code</label>
-                                                            <input type="text" class="form-control" id="swift-code" name="swift_code" placeholder="Enter SWIFT/BIC code">
-                                                        </div>
-                                                        <div class="form-group mt-3">
-                                                            <label for="bank-amount">Amount</label>
-                                                            <input type="number" class="form-control" id="bank-amount" name="realamount" min="200" step="1" placeholder="Minimum 200" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-3">
-                                                    <button type="submit" name="withdrawal_method" value="bank" class="btn btn-primary">Submit Withdrawal Request</button>
-                                                </div>
-                                            </form>
+                                            <div class="col-md-12">
+                                                <input type="password" class="form-control" id="pin" name="pin"
+                                                    placeholder="Enter your PIN" required>
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- CashApp Withdrawal Method -->
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="cashappHeading">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cashappCollapse" aria-expanded="false" aria-controls="cashappCollapse">
-                                                <i class="fa fa-dollar" style="margin-right: 10px;"></i> CashApp
-                                            </button>
-                                        </h2>
-                                        <div id="cashappCollapse" class="accordion-collapse collapse" aria-labelledby="cashappHeading" data-bs-parent="#withdrawalMethodsAccordion">
-                                            <div class="accordion-body">
-                                                <form action="/withdraw" method="POST">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="cashapp-tag">CashApp Tag</label>
-                                                            <div class="input-group">
-                                                                <span class="input-group-addon">$</span>
-                                                                <input type="text" class="form-control" id="cashapp-tag" name="cashapp_tag" placeholder="YourCashAppTag" required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="cashapp-amount">Amount</label>
-                                                            <input type="number" class="form-control" id="cashapp-amount" name="realamount" min="200" step="1" placeholder="Minimum 200" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mt-3">
-                                                    <label for="cashapp-email">Email Address</label>
-                                                    <input type="email" class="form-control" id="cashapp-email" name="cashapp_email" placeholder="Enter your email address" required>
-                                                </div>
-                                                <div class="mt-3">
-                                                    <button type="submit" name="withdrawal_method" value="cashapp" class="btn btn-primary">Submit Withdrawal Request</button>
-                                                </div>
-                                            </form>
+                                            <div class="col-md-12">
+                                                <button type="submit" name="withdrawal_method" value="bitcoin"
+                                                    class="btn btn-primary btn-block mx-auto">Submit Withdrawal Request</button>
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Skrill Withdrawal Method -->
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="skrillHeading">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#skrillCollapse" aria-expanded="false" aria-controls="skrillCollapse">
-                                                <i class="fa fa-credit-card" style="margin-right: 10px;"></i> Skrill
-                                            </button>
-                                        </h2>
-                                        <div id="skrillCollapse" class="accordion-collapse collapse" aria-labelledby="skrillHeading" data-bs-parent="#withdrawalMethodsAccordion">
-                                            <div class="accordion-body">
-                                                <form action="/withdraw" method="POST">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="skrill-email">Skrill Email</label>
-                                                            <input type="email" class="form-control" id="skrill-email" name="skrill_email" placeholder="Enter your Skrill email" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="skrill-amount">Amount</label>
-                                                            <input type="number" class="form-control" id="skrill-amount" name="realamount" min="200" step="1" placeholder="Minimum 200" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mt-3">
-                                                    <label for="skrill-phone">Phone Number (Optional)</label>
-                                                    <input type="tel" class="form-control" id="skrill-phone" name="skrill_phone" placeholder="Enter your phone number">
-                                                </div>
-                                                <div class="mt-3">
-                                                    <button type="submit" name="withdrawal_method" value="skrill" class="btn btn-primary">Submit Withdrawal Request</button>
-                                                </div>
-                                            </form>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                         </div>
@@ -387,9 +250,13 @@
                                         <img src="/assets/img/uk.png">
                                         <h4 class="step__title" style="padding-bottom: 15px;color:#facd8a;">UK
                                             Registered Company</h4>
-                                        <p><%= res.locals.sitename %> is a fully registered and licensed company in UK. <%= res.locals.sitename %>
-                                            is powered by the latest and most secure form of SSL data encryption to keep
-                                            all your data and information safe and secure.</p>
+                                        <p>
+                                            <%= res.locals.sitename %> is a fully registered and licensed company in UK.
+                                                <%= res.locals.sitename %>
+                                                    is powered by the latest and most secure form of SSL data encryption
+                                                    to keep
+                                                    all your data and information safe and secure.
+                                        </p>
                                     </div>
                                 </div>
                             </div>

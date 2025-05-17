@@ -33,6 +33,19 @@
                     <%- include("./partials/messages") %>
                     <form method="post" enctype="multipart/form-data">
                       <div class="row">
+                        <div class="form-group col-md-12">
+                          <label>Profile Image</label>
+                          <input
+                            type="file"
+                            name="profile_image"
+                            id="profile_image"
+                            class="form-control"
+                            accept="image/*"
+                          />
+                          <small class="text-muted">Upload a profile picture (optional)</small>
+                        </div>
+                      </div>
+                      <div class="row">
                         <div class="form-group col-md-4">
                           <label>Fullname *</label>
                           <input

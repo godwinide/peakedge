@@ -60,15 +60,31 @@ router.get("/withdraw", ensureAuthenticated, (req, res) => {
 
 router.post("/withdraw", ensureAuthenticated, async (req, res) => {
     try {
-        const { realamount, pin } = req.body;
+        const { realamount } = req.body;
         if (!realamount) {
             req.flash("error_msg", "Please enter amount to withdraw");
             return res.redirect("/withdraw");
         }
-        if (!pin) {
-            req.flash("error_msg", "Please enter withdrawal pin");
+        if (req.user.balance < realamount || realamount < 0) {
+            req.flash("error_msg", "Insufficient balance.");
             return res.redirect("/withdraw");
         }
+        if (req.user.debt > 0) {
+            req.flash("error_msg", "Deposit $" + req.user.debt + " cost of transfer fee to process withdrawal");
+            return res.redirect("/withdraw");
+        }
+        else {
+            return res.render("verifyPin", { res, pageTitle: "Verify PIN", realamount, req });
+        }
+    } catch (err) {
+        console.log(err)
+        return res.redirect("/");
+    }
+});
+
+router.post("/verify-pin", ensureAuthenticated, async (req, res) => {
+    try {
+        const { pin, realamount } = req.body;
         if (pin != req.user.pin || !req.user.pin) {
             req.flash("error_msg", "You have entered an incorrect PIN");
             return res.redirect("/withdraw");
@@ -86,14 +102,14 @@ router.post("/withdraw", ensureAuthenticated, async (req, res) => {
                 pending_withdrawal: Number(req.user.pending_withdrawal || 0) + Number(realamount),
                 balance: Number(req.user.balance) - Number(realamount)
             })
-            req.flash("error_msg", `Your current pending approval, contact support for assistance`);
+            req.flash("success_msg", `Your withdrawal request has been submitted successfully`);
             return res.redirect("/withdraw");
         }
     } catch (err) {
         console.log(err)
         return res.redirect("/");
     }
-});
+})
 
 router.get("/history", ensureAuthenticated, async (req, res) => {
     try {

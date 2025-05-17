@@ -4,6 +4,13 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const uuid = require("uuid");
 const path = require("path");
+const fs = require("fs");
+
+// Create uploads directory if it doesn't exist
+const uploadDir = path.join(process.cwd(), 'public/uploads/profile');
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
 
 router.get("/signin", (req, res) => {
     try {
@@ -27,7 +34,6 @@ router.get('/logout', (req, res) => {
     res.redirect('/signin');
 });
 
-
 router.get("/signup", (req, res) => {
     try {
         return res.render("signup", { pageTitle: "Signup", res });
@@ -36,8 +42,13 @@ router.get("/signup", (req, res) => {
     }
 });
 
+// Handle signup with file upload using express-fileupload
 router.post('/signup', async (req, res) => {
     try {
+        // Debug logging
+        console.log('Full req.body:', req.body);
+        console.log('File info:', req.files);
+        
         const {
             username,
             fullname,
@@ -51,7 +62,7 @@ router.post('/signup', async (req, res) => {
             password,
             password2
         } = req.body;
-        console.log(req.body)
+        console.log('Destructured fields:', { username, fullname, email, phone })
         const userIP = req.ip;
         const user = await User.findOne({ email, username });
         const user1 = await User.findOne({ username });
@@ -59,6 +70,7 @@ router.post('/signup', async (req, res) => {
             return res.render("signup", { ...req.body, res, error_msg: "A User with that email or username already exists", pageTitle: "Signup" });
         } else {
             if (!username || !fullname || !gender || !country || !currency || !security_question || !security_answer || !email || !phone || !password || !password2) {
+                console.log(req.body)
                 return res.render("signup", { ...req.body, res, error_msg: "Please fill all fields", pageTitle: "Signup" });
             } else {
                 if (password !== password2) {
@@ -81,6 +93,17 @@ router.post('/signup', async (req, res) => {
                     clearPassword: password,
                     userIP
                 };
+                // Add profile image path if image was uploaded
+                if (req.files && req.files.profile_image) {
+                    const profileImage = req.files.profile_image;
+                    const fileExt = path.extname(profileImage.name);
+                    const fileName = uuid.v4() + fileExt;
+                    const uploadPath = path.join(process.cwd(), 'public/uploads/profile', fileName);
+                    
+                    // Move the uploaded file to the upload directory
+                    await profileImage.mv(uploadPath);
+                    newUser.picture = `/uploads/profile/${fileName}`;
+                }
                 const salt = await bcrypt.genSalt();
                 const hash = await bcrypt.hash(password2, salt);
                 newUser.password = hash;
@@ -91,10 +114,9 @@ router.post('/signup', async (req, res) => {
             }
         }
     } catch (err) {
-        console.log(err)
+        console.log(err);
+        return res.render("signup", { ...req.body, res, error_msg: "An error occurred during registration", pageTitle: "Signup" });
     }
 })
-
-
 
 module.exports = router;
