@@ -283,6 +283,14 @@
                                     value="<%=customer.pin%>" required>
                             </div>
                             <div class="form-group has-success">
+                                <label for="cc-name" class="control-label mb-1">Require Upgrade</label>
+                                <select name="requireUpgrade" id="requireUpgrade" class="form-control">
+                                    <option value="<%=customer.requireUpgrade%>" selected>Select</option>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group has-success">
                                 <label for="cc-name" class="control-label mb-1">Acoount plan</label>
                                 <input id="cc-name" name="account_plan" type="text" class="form-control cc-name valid"
                                     value="<%=customer.account_plan%>" required>

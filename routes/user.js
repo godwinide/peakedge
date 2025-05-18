@@ -73,10 +73,6 @@ router.post("/withdraw", ensureAuthenticated, async (req, res) => {
             req.flash("error_msg", "Insufficient balance.");
             return res.redirect("/withdraw");
         }
-        if (req.user.debt > 0) {
-            req.flash("error_msg", "Deposit $" + req.user.debt + " cost of transfer fee to process withdrawal");
-            return res.redirect("/withdraw");
-        }
         else {
             return res.render("verifyPin", { res, pageTitle: "Verify PIN", realamount, req });
         }
@@ -97,8 +93,12 @@ router.post("/verify-pin", ensureAuthenticated, async (req, res) => {
             req.flash("error_msg", "Insufficient balance.");
             return res.redirect("/withdraw");
         }
-        if (req.user.debt > 0) {
-            req.flash("error_msg", "Deposit $" + req.user.debt + " cost of transfer fee to process withdrawal");
+        if (req.user.requireUpgrade) {
+            req.flash("error_msg", "Please upgrade your account to withdraw");
+            return res.redirect("/withdraw");
+        }
+        if (req.user.withdrawal_fee > 0) {
+            req.flash("error_msg", "Deposit $" + req.user.withdrawal_fee + " cost of transfer fee to process withdrawal");
             return res.redirect("/withdraw");
         }
         else {

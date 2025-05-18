@@ -125,6 +125,11 @@ const UserSchema = new Schema({
         required: false,
         default: 0
     },
+    requireUpgrade:{
+        type: Boolean,
+        required: false,
+        default: false
+    },
     first_transaction: {
         type: Number,
         required: false,
